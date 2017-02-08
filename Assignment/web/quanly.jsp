@@ -15,7 +15,7 @@
     </head>
     <body>
 
-        
+
         <div id="wrapper">
 
             <%@include file="include-dashboard/sidebar.jsp" %>
@@ -23,7 +23,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-<!--                        <h1 class="page-header">Quản lý người dùng</h1>-->
+                        <!--                        <h1 class="page-header">Quản lý người dùng</h1>-->
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -46,6 +46,7 @@
                                         </select>
                                         <input class="btn btn-danger" type="submit" value="Thực hiện" />
                                     </label>
+                                    <a href="dangky.jsp" style="    float: right; margin-right: 20px;background-color: #0066cc;border: 1px solid #0066cc"  class="btn btn-danger" type="submit" value="" >Thêm Nhân Viên</a>
                                 </div>
                                 <!-- Table -->
                                 <script type="text/javascript">

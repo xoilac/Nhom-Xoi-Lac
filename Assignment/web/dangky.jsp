@@ -64,7 +64,7 @@
                         <div class="form-group">
 
                             <input type="file" name="file" size="50" onchange="loadFile(event)" style="margin-top: 20px;    margin-left: 306px;"/>
-                            <img id="output" src="" style="    margin-left: 306px;">
+                            <img id="output" src="" style="width:100px;height:100px;    margin-left: 306px;">
                             <script type="text/javascript">
                                 var loadFile = function (event) {
                                     var ouput = document.getElementById('ouput');

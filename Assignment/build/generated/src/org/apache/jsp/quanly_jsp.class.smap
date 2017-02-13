@@ -1,0 +1,36 @@
+SMAP
+quanly_jsp.java
+JSP
+*S JSP
+*F
++ 0 quanly.jsp
+quanly.jsp
++ 1 headtag.jsp
+include-dashboard/headtag.jsp
++ 2 sidebar.jsp
+include-dashboard/sidebar.jsp
++ 3 dangky.jsp 
+dangky.jsp 
+*L
+5,8:51
+13:59,2
+14:61
+5#1,49:62
+14#0,8:110
+5#2,261:118
+21#0,29:379
+5#3,86:408
+49#0,13:493
+83:528,2
+84,22:530
+111:558,2
+112,25:560
+137:586,2
+138,10:588
+148:599,2
+149,8:601
+157:610,2
+158,5:612
+163:617,2
+164,3:619
+*E

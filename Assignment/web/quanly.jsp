@@ -46,7 +46,8 @@
                                         </select>
                                         <input class="btn btn-danger" type="submit" value="Thực hiện" />
                                     </label>
-                                    <a href="dangky.jsp" style="    float: right; margin-right: 20px;background-color: #0066cc;border: 1px solid #0066cc"  class="btn btn-danger" type="submit" value="" >Thêm Nhân Viên</a>
+                                    
+                                    <a href="#register" style="    float: right; margin-right: 20px;background-color: #0066cc;border: 1px solid #0066cc"  class="btn btn-danger btn btn-info btn-lg"data-toggle="modal" type="submit" value="" >Thêm Nhân Viên</a>
                                 </div>
                                 <!-- Table -->
                                 <script type="text/javascript">
@@ -123,7 +124,7 @@
 
 
                                             <td>
-                                                <a href="edituser.jsp?iduser=<>">Edit</a>
+                                                <a href="#edit"data-toggle="modal" >Edit</a>
                                             </td>
 
                                             <td>
@@ -135,12 +136,14 @@
                                         <%//                                            }
                                         %>
 
-
+                                          
 
                                     </tbody>
 
                                 </table>
                             </form>
+                                        <%@include file="dangky.jsp" %>
+                                        <%@include file="edit.jsp" %>
 
                             <%//                                if (pageCount != 1) {
                             %>
@@ -153,8 +156,10 @@
                             </div>
                             <%//                                }
                             %>
+                            
                         </div>
                     </section>
+                          
                 </div>
                 <%--<%@include file="includes/footer.jsp" %>--%>
                 </body>

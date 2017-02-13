@@ -1,18 +1,18 @@
 <%-- 
-    Document   : dangky
-    Created on : Jan 18, 2017, 9:15:37 AM
+    Document   : edit.jsp
+    Created on : Feb 13, 2017, 8:57:22 AM
     Author     : Admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<div id="register" style="margin-top: -65px;" class="modal fade" role="dialog">
+<div id="edit" style="margin-top: -65px;" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style=" color: #05B2D2;   text-align: center;" class="modal-title"><i class="glyphicon glyphicon-user"></i> Thêm nhân viên</h4>
+                <h4 style=" color: #05B2D2;   text-align: center;" class="modal-title"><i class="glyphicon glyphicon-user"></i> Sửa nhân viên</h4>
             </div>
             <form class="form-horizontal" name="fUser" onsubmit="return validateFormUser()" action="" method="post" id="fregister">
 
@@ -78,7 +78,7 @@
                 <div class="form-group" >
                     <div class="col-md-2">
                     </div>
-                    <button type="submit"  class="btn btn-twitter">Thêm</button>
+                    <button type="submit"  class="btn btn-twitter">Sửa</button>
                 </div>
 
             </form>

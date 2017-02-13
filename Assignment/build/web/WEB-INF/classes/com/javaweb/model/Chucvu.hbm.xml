@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 13, 2017 8:24:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.javaweb.model.Chucvu" table="chucvu" catalog="ql_nhanvien" optimistic-lock="version">
+        <id name="idchucvu" type="java.lang.Integer">
+            <column name="idchucvu" />
+            <generator class="identity" />
+        </id>
+        <property name="tenchucvu" type="string">
+            <column name="tenchucvu" length="45" not-null="true" />
+        </property>
+        <property name="mota" type="string">
+            <column name="mota" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

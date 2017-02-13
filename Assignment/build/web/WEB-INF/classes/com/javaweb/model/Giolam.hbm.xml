@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 13, 2017 8:24:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.javaweb.model.Giolam" table="giolam" catalog="ql_nhanvien" optimistic-lock="version">
+        <id name="idgiolam" type="java.lang.Integer">
+            <column name="idgiolam" />
+            <generator class="identity" />
+        </id>
+        <property name="nhanvien" type="int">
+            <column name="nhanvien" not-null="true" />
+        </property>
+        <property name="calamviec" type="int">
+            <column name="calamviec" not-null="true" />
+        </property>
+        <property name="giovao" type="timestamp">
+            <column name="giovao" length="19" not-null="true" />
+        </property>
+        <property name="giora" type="timestamp">
+            <column name="giora" length="19" not-null="true" />
+        </property>
+        <property name="lamho" type="java.lang.Boolean">
+            <column name="lamho" />
+        </property>
+        <property name="ghichu" type="string">
+            <column name="ghichu" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

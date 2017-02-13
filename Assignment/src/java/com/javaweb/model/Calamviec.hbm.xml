@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 13, 2017 8:24:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.javaweb.model.Calamviec" table="calamviec" catalog="ql_nhanvien" optimistic-lock="version">
+        <id name="idcalamviec" type="java.lang.Integer">
+            <column name="idcalamviec" />
+            <generator class="identity" />
+        </id>
+        <property name="maca" type="string">
+            <column name="maca" length="20" not-null="true" />
+        </property>
+        <property name="tenca" type="string">
+            <column name="tenca" length="50" not-null="true" />
+        </property>
+        <property name="giobatdau" type="string">
+            <column name="giobatdau" length="45" not-null="true" />
+        </property>
+        <property name="gioketthuc" type="string">
+            <column name="gioketthuc" length="45" not-null="true" />
+        </property>
+        <property name="ghichu" type="string">
+            <column name="ghichu" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

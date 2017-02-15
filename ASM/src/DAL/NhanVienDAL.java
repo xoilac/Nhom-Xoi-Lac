@@ -156,13 +156,13 @@ public class NhanVienDAL {
     public static boolean KiemTraDN(String tenDN, String mK) {
         boolean blnKetQua = false;
 
-        String cauTruyVan = "Select * from NhanVien where TenDangNhap = '" + tenDN + "' and MatKhau = '" + mK + "' ";
+        String cauTruyVan = "Select * from NhanVien where tenDN = '" + tenDN + "' and matKhau = '" + mK + "' ";
         ResultSet rs = ConnectionDB.ExecuteQueryGetTable(cauTruyVan);
 
         try {
             if (rs.next()) {
-                maNguoiTao = rs.getInt("IDNhanVien");
-                iQuyenND = rs.getInt("Quyen");
+                maNguoiTao = rs.getInt("idNhanVien");
+             //   iQuyenND = rs.getInt("Quyen");//
                 return true;
             }
         } catch (SQLException ex) {

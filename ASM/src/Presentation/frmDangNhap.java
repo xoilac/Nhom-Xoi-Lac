@@ -145,8 +145,8 @@ public class frmDangNhap extends javax.swing.JFrame {
         
         if(KiemTraDangNhap(tenDN, matKhau)){
             this.dispose();
-            frmTrangChinh hd = new frmTrangChinh();
-            hd.show();
+          //  frmTrangChinh hd = new frmTrangChinh();//
+         //   hd.show();
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
     /**

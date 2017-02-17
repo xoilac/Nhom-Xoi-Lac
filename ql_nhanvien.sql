@@ -162,7 +162,7 @@ DROP TABLE IF EXISTS `nhanvien`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nhanvien` (
   `idnhanvien` int(11) NOT NULL AUTO_INCREMENT,
-  `hoten` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `hoten` varchar(60) CHARACTER SET utf8 DEFAULT NULL,
   `ngaysinh` date NOT NULL,
   `sdt` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `diachi` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
@@ -176,6 +176,7 @@ CREATE TABLE `nhanvien` (
   `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `luongnv` text CHARACTER SET utf8 NOT NULL,
   `ghichu` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hinhanh` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`idnhanvien`),
   UNIQUE KEY `idnhanvien_UNIQUE` (`idnhanvien`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -187,7 +188,7 @@ CREATE TABLE `nhanvien` (
 
 LOCK TABLES `nhanvien` WRITE;
 /*!40000 ALTER TABLE `nhanvien` DISABLE KEYS */;
-INSERT INTO `nhanvien` VALUES (1,'to van tu','1997-02-17','01653429579','daklak',1,'','2016-02-02','241578987','2012-02-06','tovantu','dancaydat','togia@gmail.com','2000000',NULL);
+INSERT INTO `nhanvien` VALUES (1,'to van tu','1997-02-17','01653429579','daklak',1,'','2016-02-02','241578987','2012-02-06','tovantu','dancaydat','togia@gmail.com','2000000','ads',NULL);
 /*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -200,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-17 15:50:18
+-- Dump completed on 2017-02-17 16:20:42

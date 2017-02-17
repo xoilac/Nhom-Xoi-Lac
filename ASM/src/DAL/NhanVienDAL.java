@@ -53,7 +53,7 @@ public class NhanVienDAL {
     Tham số truyền vào là id của nhân viên - @idNhanVien
      */
     public static void XoaNhanVien(String idNhanVien) {
-        String cauTruyVan = "Delete NhanVien where IDNhanVien = " + idNhanVien;
+        String cauTruyVan = " delete from NhanVien where idNhanVien = " + idNhanVien;
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
     }
 
@@ -130,18 +130,18 @@ public class NhanVienDAL {
         NhanVien nv = new NhanVien();
         try {
             while (rs.next()) {
-                nv.setMaNhanVien(rs.getInt("IDNhanVien"));
-                nv.setTenNhanVien(rs.getString("TenNhanVien"));
-                nv.setTenDangNhap(rs.getString("TenDangNhap"));
-                nv.setMatKhau(rs.getString("MatKhau"));
-                nv.setDiaChi(rs.getString("DiaChi"));
-                nv.setSDT(rs.getString("SoDienThoai"));
-                nv.setNgaySinh(rs.getString("NgaySinh"));
-                nv.setNgayVaoLam(rs.getString("NgayVaoLam"));
-                nv.setQuyen(rs.getInt("Quyen"));
+               nv.setIdNhanVien(rs.getInt("idNhanVien"));
+                nv.setHoTen(rs.getString("hoTen"));
+                nv.setTenDN(rs.getString("tenDN"));
+                nv.setMatKhau(rs.getString("matKhau"));
+                nv.setDiaChi(rs.getString("diaChi"));
+                nv.setSdt(rs.getString("sdt"));
+                nv.setNgaySinh(rs.getString("ngaySinh"));
+                nv.setNgayVaoLam(rs.getString("ngayVaoLam"));
+                nv.setChucVu(rs.getInt("chucVu"));
                 nv.setHinhAnh(rs.getString("HinhAnh"));
-                nv.setGioiTinh(rs.getInt("GioiTinh"));
-                nv.setGhiChu(rs.getString("GhiChu"));
+                nv.setGioiTinh(rs.getBoolean("gioiTinh"));
+                nv.setGhiChu(rs.getString("ghiChu"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());

@@ -233,12 +233,12 @@ public class NhanVienBLL {
         return rs;
     }
     public static void DoDuLieu(ResultSet rs,JTable table){
-        Object[] obj=new Object[]{"STT","IDNV","HoTen","NgaySinh","DienThoai","DiaChi","ChucVu","GioiTinh","NgayVaoLam","CMND","NgayCap","TenDN","MatKhau","Email","Luong","GhiChu"};
+        Object[] obj=new Object[]{"STT","IDNV","HoTen","NgaySinh","DienThoai","DiaChi","ChucVu","GioiTinh","NgayVaoLam","CMND","NgayCap","Email","Luong","GhiChu"};
         DefaultTableModel tableModel=new DefaultTableModel(obj,0);
         table.setModel(tableModel);
         try {
             while(rs.next()){
-                Object[] item =new Object[16];
+                Object[] item =new Object[14];
                 item[0]=table.getRowCount()+1;
                 item[1]=rs.getInt("idnhanvien");
                 item[2]=rs.getString("hoten");
@@ -254,11 +254,10 @@ public class NhanVienBLL {
                 item[8]=rs.getString("ngayvaolam");
                 item[9]=rs.getString("cmnd");
                 item[10]=rs.getString("ngaycap");
-                item[11]=rs.getString("tendn");
-                item[12]=rs.getString("matkhau");
-                item[13]=rs.getString("email");
-                item[14]=rs.getString("luongnv");
-                item[15]=rs.getString("ghichu");
+                
+                item[11]=rs.getString("email");
+                item[12]=rs.getString("luongnv");
+                item[13]=rs.getString("ghichu");
                 tableModel.addRow(item);
             }
         } catch (SQLException ex) {
@@ -276,5 +275,9 @@ public class NhanVienBLL {
             System.out.println(ex.toString());
         }
         return tenquyen;
+    }
+     public static ResultSet LayQuyen(){
+        ResultSet rs=NhanVienDAL.LayDuLieuQuyen();
+        return rs;
     }
 }

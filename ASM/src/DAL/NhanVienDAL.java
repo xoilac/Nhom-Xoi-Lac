@@ -207,4 +207,10 @@ public class NhanVienDAL {
         ResultSet rs=ConnectionDB.ExecuteQueryGetTable(cauTruyVan);
         return rs;
     }
+    public static ResultSet LayDuLieuQuyen(){ 
+        String CTV="select * from chucvu";
+        ResultSet rs=ConnectionDB.ExecuteQueryGetTable(CTV);
+        return rs;
+        
+    }
 }

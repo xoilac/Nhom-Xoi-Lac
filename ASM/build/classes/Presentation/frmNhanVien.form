@@ -406,11 +406,8 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
                                           <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
+                                          <Component id="cbbchucvu" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -468,7 +465,7 @@
                                       <Component id="dateNgayVaolam" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbbchucvu" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblchucvu" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -782,7 +779,7 @@
                 <Property name="text" type="java.lang.String" value="Ch&#x1ee9;c v&#x1ee5;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="cbbchucvu">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">

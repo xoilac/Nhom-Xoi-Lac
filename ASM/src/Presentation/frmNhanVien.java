@@ -75,7 +75,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         lblPicture = new javax.swing.JLabel();
         btnTaoMoi = new javax.swing.JButton();
         lblchucvu = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbchucvu = new javax.swing.JComboBox<>();
         pnlDanhSachNV = new javax.swing.JPanel();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
@@ -264,7 +264,7 @@ public class frmNhanVien extends javax.swing.JFrame {
 
         lblchucvu.setText("Chức vụ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout pnlThongTinLayout = new javax.swing.GroupLayout(pnlThongTin);
         pnlThongTin.setLayout(pnlThongTinLayout);
@@ -325,10 +325,8 @@ public class frmNhanVien extends javax.swing.JFrame {
                                     .addComponent(lblchucvu))
                                 .addGap(70, 70, 70)
                                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlThongTinLayout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(cbbchucvu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(pnlThongTinLayout.createSequentialGroup()
                                 .addGap(116, 116, 116)
                                 .addComponent(dateNgayVaolam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -372,7 +370,7 @@ public class frmNhanVien extends javax.swing.JFrame {
                                 .addComponent(dateNgayVaolam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbbchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblchucvu)))))
                     .addGroup(pnlThongTinLayout.createSequentialGroup()
                         .addComponent(dtpAnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -741,9 +739,9 @@ public class frmNhanVien extends javax.swing.JFrame {
 //        NhanVienBLL.DoDuLieuNhanVien(rsNV, tblNhanVien);
 //
 //        //Tạo biến rs để chứa dữ liệu từ của QuyenNhanVienBLL
-//        ResultSet rsQuyen = QuyenNhanVienBLL.LayThongTinQuyen();
-//        //Gọi hàm để đổ dữ liệu vào Combobox
-//        ComboBoxBLL.LoadDuLieuCombobox(rsQuyen, cbbQuyenNV, "TenQuyen", "MaQuyen");
+        ResultSet rsQuyen = NhanVienBLL.LayQuyen();
+        //Gọi hàm để đổ dữ liệu vào Combobox
+        ComboBoxBLL.LoadDuLieuCombobox(rsQuyen, cbbchucvu, "tenchucvu", "idchucvu");
 //
 //        //Gọi hàm đổi sang ô text
 //        DoiDateChooser(dateNgayVaolam).setText(sdf.format(currentDate));
@@ -782,35 +780,35 @@ public class frmNhanVien extends javax.swing.JFrame {
         txtMaNhanVien.setText(tblNhanVien.getValueAt(index, 1).toString());
         txtTenNhanVien.setText(tblNhanVien.getValueAt(index, 2).toString());
 
-        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 8).toString());
+        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 13).toString());
         txtDiaChi.setText(tblNhanVien.getValueAt(index, 5).toString());
-        txtSDT.setText(tblNhanVien.getValueAt(index, 6).toString());
+        txtSDT.setText(tblNhanVien.getValueAt(index, 4).toString());
         //Gọi hàm đổi sang ô text
-        DoiDateChooser(dateNgayVaolam).setText(tblNhanVien.getValueAt(index, 7).toString());
-        DoiDateChooser(dateNgaySinh).setText(tblNhanVien.getValueAt(index, 4).toString());
+        DoiDateChooser(dateNgayVaolam).setText(tblNhanVien.getValueAt(index, 8).toString());
+        DoiDateChooser(dateNgaySinh).setText(tblNhanVien.getValueAt(index, 3).toString());
         //Gọi hàm chọn radio button phù hợp
-        String gioiTinh = tblNhanVien.getValueAt(index, 3).toString();
+        String gioiTinh = tblNhanVien.getValueAt(index, 7).toString();
         chonRadio(gioiTinh, radNam, radNu);
 
         //Tạo biến và gọi hàm chuyển đổi combobox
-        String quyen = tblNhanVien.getValueAt(index, 9).toString();
-        ComboBoxBLL.setSelectedCombobox(cbbQuyenNV, quyen);
+        String chucvu = tblNhanVien.getValueAt(index, 6).toString();
+        ComboBoxBLL.setSelectedCombobox(cbbchucvu, chucvu);
 
-        String maNV = tblNhanVien.getValueAt(index, 1).toString();
-        String fileAnh = NhanVienBLL.LayAnh(maNV);
+//        String maNV = tblNhanVien.getValueAt(index, 1).toString();
+//        String fileAnh = NhanVienBLL.LayAnh(maNV);
         
         /*
         Thực hiện đọc ảnh của từng nhân viên
         */
-        File anh = new File("image\\Nhan_vien\\" + fileAnh);
-        try {
-            image = DocFileAnh(anh);
-            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
-        } catch (NullPointerException e) {
-            anh = new File(macDinh);
-            image = DocFileAnh(anh);
-            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
-        }
+//        File anh = new File("image\\Nhan_vien\\" + fileAnh);
+//        try {
+//            image = DocFileAnh(anh);
+//            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+//        } catch (NullPointerException e) {
+//            anh = new File(macDinh);
+//            image = DocFileAnh(anh);
+//            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+//        }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -1031,10 +1029,10 @@ public class frmNhanVien extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup btngrGioiTinh;
+    private javax.swing.JComboBox<String> cbbchucvu;
     private com.toedter.calendar.JDateChooser dateNgaySinh;
     private com.toedter.calendar.JDateChooser dateNgayVaolam;
     private javax.swing.JDesktopPane dtpAnhNV;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -74,6 +74,8 @@ public class frmNhanVien extends javax.swing.JFrame {
         dtpAnhNV = new javax.swing.JDesktopPane();
         lblPicture = new javax.swing.JLabel();
         btnTaoMoi = new javax.swing.JButton();
+        lblchucvu = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         pnlDanhSachNV = new javax.swing.JPanel();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
@@ -260,6 +262,10 @@ public class frmNhanVien extends javax.swing.JFrame {
             }
         });
 
+        lblchucvu.setText("Chức vụ");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout pnlThongTinLayout = new javax.swing.GroupLayout(pnlThongTin);
         pnlThongTin.setLayout(pnlThongTinLayout);
         pnlThongTinLayout.setHorizontalGroup(
@@ -314,9 +320,15 @@ public class frmNhanVien extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongTinLayout.createSequentialGroup()
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlThongTinLayout.createSequentialGroup()
-                                .addComponent(lblGhiChu)
+                                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblGhiChu)
+                                    .addComponent(lblchucvu))
                                 .addGap(70, 70, 70)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlThongTinLayout.createSequentialGroup()
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                             .addGroup(pnlThongTinLayout.createSequentialGroup()
                                 .addGap(116, 116, 116)
                                 .addComponent(dateNgayVaolam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -356,7 +368,12 @@ public class frmNhanVien extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNgayVaoLam)
-                            .addComponent(dateNgayVaolam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlThongTinLayout.createSequentialGroup()
+                                .addComponent(dateNgayVaolam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblchucvu)))))
                     .addGroup(pnlThongTinLayout.createSequentialGroup()
                         .addComponent(dtpAnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -679,57 +696,61 @@ public class frmNhanVien extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
         //Lấy dữ liệu từ form gán vào các biến
-        String tenNV = txtTenNhanVien.getText().trim();
-        String diaChi = txtDiaChi.getText().trim();
-        String sdt = txtSDT.getText().trim();
-        String ngaySinh = DoiDateChooser(dateNgaySinh).getText();
-        String ngayVaoLam = DoiDateChooser(dateNgayVaolam).getText();
-        String ghiChu = txtaGhiChu.getText().trim();
-
-        //Gọi hàm lấy ID của phần tử trong cbb
-        int quyen = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbQuyenNV));
-
-        //Gọi hàm đổi giới tính sang int
-        int gioiTinh = GioiTinhBoolean(radNam);
-        Date randomDate = new Date();
-        //write image
-        f = new File("image\\Nhan_vien\\anh_" + sdf2.format(randomDate) + ".png");
-
-        ghiFileAnh(image, f);
-
-        String hinhAnh = f.getName();
-
-        //Tạo đối tượng NhanVien từ DTO
-        NhanVien nv = new NhanVien(0, tenNV, diaChi, sdt, gioiTinh, ngaySinh, ngayVaoLam, "", "", quyen, ghiChu, hinhAnh);
-
-        //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
-        NhanVienBLL.ThemNhanVien(nv);
-
-        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
-        ResultSet rs = NhanVienBLL.LayThongTinNhanVien();
-        //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
-        NhanVienBLL.DoDuLieuNhanVien(rs, tblNhanVien);
+//        String tenNV = txtTenNhanVien.getText().trim();
+//        String diaChi = txtDiaChi.getText().trim();
+//        String sdt = txtSDT.getText().trim();
+//        String ngaySinh = DoiDateChooser(dateNgaySinh).getText();
+//        String ngayVaoLam = DoiDateChooser(dateNgayVaolam).getText();
+//        String ghiChu = txtaGhiChu.getText().trim();
+//
+//        //Gọi hàm lấy ID của phần tử trong cbb
+//        int quyen = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbQuyenNV));
+//
+//        //Gọi hàm đổi giới tính sang int
+//        int gioiTinh = GioiTinhBoolean(radNam);
+//        Date randomDate = new Date();
+//        //write image
+//        f = new File("image\\Nhan_vien\\anh_" + sdf2.format(randomDate) + ".png");
+//
+//        ghiFileAnh(image, f);
+//
+//        String hinhAnh = f.getName();
+//
+//        //Tạo đối tượng NhanVien từ DTO
+//        NhanVien nv = new NhanVien(0, tenNV, diaChi, sdt, gioiTinh, ngaySinh, ngayVaoLam, "", "", quyen, ghiChu, hinhAnh);
+//
+//        //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
+//        NhanVienBLL.ThemNhanVien(nv);
+//
+//        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
+//        ResultSet rs = NhanVienBLL.LayThongTinNhanVien();
+//        //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
+//        NhanVienBLL.DoDuLieuNhanVien(rs, tblNhanVien);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 //        DongHo(mnuTime);
-PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
-        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
-        ResultSet rsNV = NhanVienBLL.LayThongTinNhanVien();
-        //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
-        NhanVienBLL.DoDuLieuNhanVien(rsNV, tblNhanVien);
-
-        //Tạo biến rs để chứa dữ liệu từ của QuyenNhanVienBLL
-        ResultSet rsQuyen = QuyenNhanVienBLL.LayThongTinQuyen();
-        //Gọi hàm để đổ dữ liệu vào Combobox
-        ComboBoxBLL.LoadDuLieuCombobox(rsQuyen, cbbQuyenNV, "TenQuyen", "MaQuyen");
-
-        //Gọi hàm đổi sang ô text
-        DoiDateChooser(dateNgayVaolam).setText(sdf.format(currentDate));
-
-        f = new File(macDinh);
-        image = DocFileAnh(f);
-        lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+    // Tạo biến ResultSet và thực hiện đổ dữ liệu
+            ResultSet rs=NhanVienBLL.LayNhanVien();
+            //Thực hiện đổ dữ liệu vào table
+            NhanVienBLL.DoDuLieu(rs, tblNhanVien);
+//PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
+//        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
+//        ResultSet rsNV = NhanVienBLL.LayThongTinNhanVien();
+//        //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
+//        NhanVienBLL.DoDuLieuNhanVien(rsNV, tblNhanVien);
+//
+//        //Tạo biến rs để chứa dữ liệu từ của QuyenNhanVienBLL
+//        ResultSet rsQuyen = QuyenNhanVienBLL.LayThongTinQuyen();
+//        //Gọi hàm để đổ dữ liệu vào Combobox
+//        ComboBoxBLL.LoadDuLieuCombobox(rsQuyen, cbbQuyenNV, "TenQuyen", "MaQuyen");
+//
+//        //Gọi hàm đổi sang ô text
+//        DoiDateChooser(dateNgayVaolam).setText(sdf.format(currentDate));
+//
+//        f = new File(macDinh);
+//        image = DocFileAnh(f);
+//        lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
     }//GEN-LAST:event_formWindowOpened
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed
@@ -794,42 +815,42 @@ PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         //Thực hiện bắt lỗi
-        try {
-            //Lấy dữ liệu từ form gán vào các biến
-            int maNV = Integer.parseInt(txtMaNhanVien.getText().trim());
-            String tenNV = txtTenNhanVien.getText().trim();
-            String diaChi = txtDiaChi.getText().trim();
-            String sdt = txtSDT.getText().trim();
-            String ngaySinh = DoiDateChooser(dateNgaySinh).getText();
-            String ngayVaoLam = DoiDateChooser(dateNgayVaolam).getText();
-            String ghiChu = txtaGhiChu.getText().trim();
-
-            //Gọi hàm lấy ID của phần tử trong cbb
-            int quyen = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbQuyenNV));
-
-            //Gọi hàm đổi giới tính sang int
-            int gioiTinh = GioiTinhBoolean(radNam);
-            Date randomDate = new Date();
-            //write image
-            f = new File("image\\Nhan_vien\\anh_" + sdf2.format(randomDate) + ".png");
-            ghiFileAnh(image, f);
-
-            String hinhAnh = f.getName();
-            System.out.println(sdf2.format(randomDate));
-
-            //Tạo đối tượng NhanVien từ DTO
-            NhanVien nv = new NhanVien(maNV, tenNV, diaChi, sdt, gioiTinh, ngaySinh, ngayVaoLam, "", "", quyen, ghiChu, hinhAnh);
-            //Gọi hàm SuaNhanVien từ BLL để tiến hành sửa dữ liệu trong DB
-            NhanVienBLL.SuaNhanVien(nv);
-
-            //Tạo biến ResultSet và thực hiện gán dữ liệu được sau khi sửa
-            ResultSet rsNV = NhanVienBLL.LayThongTinNhanVien();
-            //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
-            NhanVienBLL.DoDuLieuNhanVien(rsNV, tblNhanVien);
-
-        } catch (NumberFormatException e) {
-            ThongBao("Vui lòng chọn bản ghi cần sửa !", "Thông báo", 1);
-        }
+//        try {
+//            //Lấy dữ liệu từ form gán vào các biến
+//            int maNV = Integer.parseInt(txtMaNhanVien.getText().trim());
+//            String tenNV = txtTenNhanVien.getText().trim();
+//            String diaChi = txtDiaChi.getText().trim();
+//            String sdt = txtSDT.getText().trim();
+//            String ngaySinh = DoiDateChooser(dateNgaySinh).getText();
+//            String ngayVaoLam = DoiDateChooser(dateNgayVaolam).getText();
+//            String ghiChu = txtaGhiChu.getText().trim();
+//
+//            //Gọi hàm lấy ID của phần tử trong cbb
+//            int quyen = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbQuyenNV));
+//
+//            //Gọi hàm đổi giới tính sang int
+//            int gioiTinh = GioiTinhBoolean(radNam);
+//            Date randomDate = new Date();
+//            //write image
+//            f = new File("image\\Nhan_vien\\anh_" + sdf2.format(randomDate) + ".png");
+//            ghiFileAnh(image, f);
+//
+//            String hinhAnh = f.getName();
+//            System.out.println(sdf2.format(randomDate));
+//
+//            //Tạo đối tượng NhanVien từ DTO
+//            NhanVien nv = new NhanVien(maNV, tenNV, diaChi, sdt, gioiTinh, ngaySinh, ngayVaoLam, "", "", quyen, ghiChu, hinhAnh);
+//            //Gọi hàm SuaNhanVien từ BLL để tiến hành sửa dữ liệu trong DB
+//            NhanVienBLL.SuaNhanVien(nv);
+//
+//            //Tạo biến ResultSet và thực hiện gán dữ liệu được sau khi sửa
+//            ResultSet rsNV = NhanVienBLL.LayThongTinNhanVien();
+//            //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
+//            NhanVienBLL.DoDuLieuNhanVien(rsNV, tblNhanVien);
+//
+//        } catch (NumberFormatException e) {
+//            ThongBao("Vui lòng chọn bản ghi cần sửa !", "Thông báo", 1);
+//        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -843,124 +864,124 @@ PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed
         //Thực hiện gán dữ liệu cho các textfield, radio, combobox trên form
-        txtDiaChi.setText("");
-        txtTenNhanVien.setText("");
-        cbbQuyenNV.setSelectedIndex(0);
-        radNam.setSelected(true);
-        txtMaNhanVien.setText("");
-        txtSDT.setText("");
-        txtTimKiem.setText("");
-        txtaGhiChu.setText("");
-        //Gọi hàm đổi sang ô text
-        DoiDateChooser(dateNgaySinh).setText("");
-        DoiDateChooser(dateNgayVaolam).setText(sdf.format(currentDate));
-
-        //Gọi hàm để lấy dữ liệu lúc chưa tìm kiếm
-        ResultSet rsTimKiem = NhanVienBLL.TimKiemNhanVien("");
-        NhanVienBLL.DoDuLieuNhanVien(rsTimKiem, tblNhanVien);
-        f = new File(macDinh);
-        image = DocFileAnh(f);
-        lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+//        txtDiaChi.setText("");
+//        txtTenNhanVien.setText("");
+//        cbbQuyenNV.setSelectedIndex(0);
+//        radNam.setSelected(true);
+//        txtMaNhanVien.setText("");
+//        txtSDT.setText("");
+//        txtTimKiem.setText("");
+//        txtaGhiChu.setText("");
+//        //Gọi hàm đổi sang ô text
+//        DoiDateChooser(dateNgaySinh).setText("");
+//        DoiDateChooser(dateNgayVaolam).setText(sdf.format(currentDate));
+//
+//        //Gọi hàm để lấy dữ liệu lúc chưa tìm kiếm
+//        ResultSet rsTimKiem = NhanVienBLL.TimKiemNhanVien("");
+//        NhanVienBLL.DoDuLieuNhanVien(rsTimKiem, tblNhanVien);
+//        f = new File(macDinh);
+//        image = DocFileAnh(f);
+//        lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
     }//GEN-LAST:event_btnTaoMoiActionPerformed
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         //Biến chứa từ khóa cần tìm 
-        String tuKhoa = txtTimKiem.getText().trim();
-
-        //Gọi hàm và đổ dữ liệu vừa tìm kiếm vào bảng
-        ResultSet rsTimKiem = NhanVienBLL.TimKiemNhanVien(tuKhoa);
-        NhanVienBLL.DoDuLieuNhanVien(rsTimKiem, tblNhanVien);
+//        String tuKhoa = txtTimKiem.getText().trim();
+//
+//        //Gọi hàm và đổ dữ liệu vừa tìm kiếm vào bảng
+//        ResultSet rsTimKiem = NhanVienBLL.TimKiemNhanVien(tuKhoa);
+//        NhanVienBLL.DoDuLieuNhanVien(rsTimKiem, tblNhanVien);
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
     private void mnuiTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiTrangChuActionPerformed
-        frmTrangChinh tc = new frmTrangChinh();
-        tc.show();
-        this.dispose();
+//        frmTrangChinh tc = new frmTrangChinh();
+//        tc.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiTrangChuActionPerformed
 
     private void mnuiExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiExitActionPerformed
-        CauHoiThoat();
+//        CauHoiThoat();
     }//GEN-LAST:event_mnuiExitActionPerformed
 
     private void mnuiLoaiSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiLoaiSanPhamActionPerformed
-        frmLoaiSanPham lsp = new frmLoaiSanPham();
-        lsp.show();
-        this.dispose();
+//        frmLoaiSanPham lsp = new frmLoaiSanPham();
+//        lsp.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiLoaiSanPhamActionPerformed
 
     private void mnuiNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiNhaCungCapActionPerformed
-        frmNhaCungCap ncc = new frmNhaCungCap();
-        ncc.show();
-        this.dispose();
+//        frmNhaCungCap ncc = new frmNhaCungCap();
+//        ncc.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiNhaCungCapActionPerformed
 
     private void mnuiSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiSanPhamActionPerformed
-        frmSanPham sp = new frmSanPham();
-        sp.show();
-        this.dispose();
+//        frmSanPham sp = new frmSanPham();
+//        sp.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiSanPhamActionPerformed
 
     private void mnuiQLHDXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiQLHDXuatActionPerformed
-        frmHoaDon hd = new frmHoaDon();
-        hd.show();
-        this.dispose();
+//        frmHoaDon hd = new frmHoaDon();
+//        hd.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiQLHDXuatActionPerformed
 
     private void mnuiCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiCTHDActionPerformed
-        frmChiTietHoaDon cthd = new frmChiTietHoaDon();
-        cthd.show();
-        this.dispose();
+//        frmChiTietHoaDon cthd = new frmChiTietHoaDon();
+//        cthd.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiCTHDActionPerformed
 
     private void mnuKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuKhachHangActionPerformed
-        frmKhachHang kh = new frmKhachHang();
-        kh.show();
-        this.dispose();
+//        frmKhachHang kh = new frmKhachHang();
+//        kh.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuKhachHangActionPerformed
 
     private void mnuNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuNhanVienActionPerformed
-        frmNhanVien nv = new frmNhanVien();
-        nv.show();
-        this.dispose();
+//        frmNhanVien nv = new frmNhanVien();
+//        nv.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuNhanVienActionPerformed
 
     private void mnuQLTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLTaiKhoanActionPerformed
-        frmDiemDanh qlnd = new frmDiemDanh();
-        qlnd.show();
-        this.dispose();
+//        frmDiemDanh qlnd = new frmDiemDanh();
+//        qlnd.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuQLTaiKhoanActionPerformed
 
     private void mnuiHDNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiHDNhapActionPerformed
-        frmPhieuNhap pn = new frmPhieuNhap();
-        pn.show();
-        this.dispose();
+//        frmPhieuNhap pn = new frmPhieuNhap();
+//        pn.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiHDNhapActionPerformed
 
     private void mnuiHDXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiHDXuatActionPerformed
-        frmTaoHoaDon thd = new frmTaoHoaDon();
-        thd.show();
-        this.dispose();
+//        frmTaoHoaDon thd = new frmTaoHoaDon();
+//        thd.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuiHDXuatActionPerformed
 
     private void mnuTKHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTKHoaDonActionPerformed
-        frmBangThongKe btk = new frmBangThongKe();
-        btk.show();
-        this.dispose();
+//        frmBangThongKe btk = new frmBangThongKe();
+//        btk.show();
+//        this.dispose();
     }//GEN-LAST:event_mnuTKHoaDonActionPerformed
 
     private void mnuiDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiDangKyActionPerformed
-        frmDangKy dk = new frmDangKy();
-        dk.show();
+//        frmDangKy dk = new frmDangKy();
+//        dk.show();
     }//GEN-LAST:event_mnuiDangKyActionPerformed
 
     private void mnuiDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiDoiMKActionPerformed
-        frmDoiMatKhau dmk = new frmDoiMatKhau();
-        dmk.show();
+//        frmDoiMatKhau dmk = new frmDoiMatKhau();
+//        dmk.show();
     }//GEN-LAST:event_mnuiDoiMKActionPerformed
 
     private void mnuiBanQuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuiBanQuyenActionPerformed
-        frmBanQuyen bq = new frmBanQuyen();
-        bq.show();
+//        frmBanQuyen bq = new frmBanQuyen();
+//        bq.show();
     }//GEN-LAST:event_mnuiBanQuyenActionPerformed
 
     private void mnuDangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuDangXuatMousePressed
@@ -1013,6 +1034,7 @@ PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
     private com.toedter.calendar.JDateChooser dateNgaySinh;
     private com.toedter.calendar.JDateChooser dateNgayVaolam;
     private javax.swing.JDesktopPane dtpAnhNV;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1029,6 +1051,7 @@ PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
     private javax.swing.JLabel lblSoDienThoai;
     private javax.swing.JLabel lblTenNV;
     private javax.swing.JLabel lblTimKiem;
+    private javax.swing.JLabel lblchucvu;
     private javax.swing.JMenu mnuAbout;
     private javax.swing.JMenu mnuDangXuat;
     private javax.swing.JMenu mnuHoaDon;

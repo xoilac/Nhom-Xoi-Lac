@@ -195,5 +195,16 @@ public class NhanVienDAL {
                 + "where IDNhanVien = " + maND + "";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
     }
-
+    public static ResultSet LayThongTinNhanVien(){
+        ResultSet rs;
+        String CTV="select * from nhanvien";
+        rs=ConnectionDB.ExecuteQueryGetTable(CTV);
+        return rs;
+    }
+    public static ResultSet LayTenQuyen(int maquyen){
+       
+        String cauTruyVan="select tenchucvu from chucvu where idchucvu = "+maquyen;
+        ResultSet rs=ConnectionDB.ExecuteQueryGetTable(cauTruyVan);
+        return rs;
+    }
 }

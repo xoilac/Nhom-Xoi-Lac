@@ -20,7 +20,7 @@ public class MainClass {
      */
     public static void main(String[] args) {
 
-        frmDangNhap dn = new frmDangNhap();
+        frmNhanVien dn = new frmNhanVien();
         dn.show();               
 
     }

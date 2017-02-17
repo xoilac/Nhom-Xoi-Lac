@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: ql_nhanvien
 -- ------------------------------------------------------
--- Server version	5.7.17-log
+-- Server version	5.7.15-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -86,7 +86,7 @@ CREATE TABLE `chucvu` (
   `mota` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idchucvu`),
   UNIQUE KEY `idchucvu_UNIQUE` (`idchucvu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +95,7 @@ CREATE TABLE `chucvu` (
 
 LOCK TABLES `chucvu` WRITE;
 /*!40000 ALTER TABLE `chucvu` DISABLE KEYS */;
+INSERT INTO `chucvu` VALUES (1,'QuanLy',NULL);
 /*!40000 ALTER TABLE `chucvu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +178,7 @@ CREATE TABLE `nhanvien` (
   `ghichu` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idnhanvien`),
   UNIQUE KEY `idnhanvien_UNIQUE` (`idnhanvien`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,6 +187,7 @@ CREATE TABLE `nhanvien` (
 
 LOCK TABLES `nhanvien` WRITE;
 /*!40000 ALTER TABLE `nhanvien` DISABLE KEYS */;
+INSERT INTO `nhanvien` VALUES (1,'to van tu','1997-02-17','01653429579','daklak',1,'','2016-02-02','241578987','2012-02-06','tovantu','dancaydat','togia@gmail.com','2000000',NULL);
 /*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -198,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-09 13:04:49
+-- Dump completed on 2017-02-17 15:50:18

@@ -9,8 +9,11 @@ import DTO.NhanVien;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.sql.ResultSet;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
@@ -453,7 +456,7 @@ public class frmNhanVien extends javax.swing.JFrame {
                             .addComponent(txtnoicap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblnoicap))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblluong)))
                     .addComponent(lblemail)
@@ -774,44 +777,63 @@ public class frmNhanVien extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
         //Lấy dữ liệu từ form gán vào các biến
-//        String tenNV = txtTenNhanVien.getText().trim();
-//        String diaChi = txtDiaChi.getText().trim();
-//        String sdt = txtSDT.getText().trim();
-//        String ngaySinh = DoiDateChooser(dateNgaySinh).getText();
-//        String ngayVaoLam = DoiDateChooser(dateNgayVaolam).getText();
-//        String ghiChu = txtaGhiChu.getText().trim();
-//
-//        //Gọi hàm lấy ID của phần tử trong cbb
-//        int quyen = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbQuyenNV));
-//
-//        //Gọi hàm đổi giới tính sang int
-//        int gioiTinh = GioiTinhBoolean(radNam);
-//        Date randomDate = new Date();
-//        //write image
-//        f = new File("image\\Nhan_vien\\anh_" + sdf2.format(randomDate) + ".png");
-//
+        String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong;
+        tenNV = txtTenNhanVien.getText().trim();
+        diaChi = txtDiaChi.getText().trim();
+        sdt = txtSDT.getText().trim();
+        ngaySinh = DoiDateChooser(dateNgaySinh).getText();
+        ngayVaoLam = DoiDateChooser(dateNgayVaolam).getText();
+        ngayCap = DoiDateChooser(dateNgayCap).getText();
+        email = txtEmail.getText().trim();
+        luong = txtLuong.getText().trim();
+        cmnd = txtCMND.getText().trim();
+        ghiChu = txtaGhiChu.getText().trim();
+
+        //Gọi hàm lấy ID của phần tử trong cbb
+//        int chucVu = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbchucvu));
+
+        //Gọi hàm đổi giới tính sang int
+        int gioiTinh = GioiTinhBoolean(radNam);
+        Date randomDate = new Date();
+        //write image
+        f = new File("image\\Nhan_vien\\anh_" + sdf2.format(randomDate) + ".png");
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        
+        Date birthday = new Date();
+        Date ngayVL = new Date();
+        
+//        try {
+//            birthday = sdf.parse(ngaySinh);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(frmNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+//        birthday = ngaySinh;
+        
+        sdf.format(ngayVL);
 //        ghiFileAnh(image, f);
-//
+        
 //        String hinhAnh = f.getName();
-//
-//        //Tạo đối tượng NhanVien từ DTO
-//        NhanVien nv = new NhanVien(0, tenNV, diaChi, sdt, gioiTinh, ngaySinh, ngayVaoLam, "", "", quyen, ghiChu, hinhAnh);
-//
-//        //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
-//        NhanVienBLL.ThemNhanVien(nv);
-//
-//        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
+
+        //Tạo đối tượng NhanVien từ DTO
+        NhanVien nv = new NhanVien(0, tenNV, ngaySinh, sdt, diaChi, 1, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, "unknown.jpg");
+
+        //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
+        NhanVienBLL.ThemNhanVien(nv);
+
+        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
 //        ResultSet rs = NhanVienBLL.LayThongTinNhanVien();
-//        //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
+        //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
 //        NhanVienBLL.DoDuLieuNhanVien(rs, tblNhanVien);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 //        DongHo(mnuTime);
-    // Tạo biến ResultSet và thực hiện đổ dữ liệu
-            ResultSet rs=NhanVienBLL.LayNhanVien();
-            //Thực hiện đổ dữ liệu vào table
-            NhanVienBLL.DoDuLieu(rs, tblNhanVien);
+        // Tạo biến ResultSet và thực hiện đổ dữ liệu
+        ResultSet rs = NhanVienBLL.LayNhanVien();
+        //Thực hiện đổ dữ liệu vào table
+        NhanVienBLL.DoDuLieu(rs, tblNhanVien);
 //PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
 //        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
 //        ResultSet rsNV = NhanVienBLL.LayThongTinNhanVien();
@@ -876,10 +898,9 @@ public class frmNhanVien extends javax.swing.JFrame {
 
 //        String maNV = tblNhanVien.getValueAt(index, 1).toString();
 //        String fileAnh = NhanVienBLL.LayAnh(maNV);
-        
         /*
         Thực hiện đọc ảnh của từng nhân viên
-        */
+         */
 //        File anh = new File("image\\Nhan_vien\\" + fileAnh);
 //        try {
 //            image = DocFileAnh(anh);

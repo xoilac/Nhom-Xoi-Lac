@@ -523,9 +523,9 @@
                                   <Component id="lblnoicap" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtLuong" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblluong" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblluong" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="lblemail" alignment="0" min="-2" max="-2" attributes="0"/>

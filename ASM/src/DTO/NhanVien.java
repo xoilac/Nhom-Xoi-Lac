@@ -12,7 +12,7 @@ public class NhanVien {
     private String sdt;
     private String diaChi;
     private int chucVu;
-    private boolean gioiTinh;
+    private int gioiTinh;
     private String ngayVaoLam;
     private String cmnd;
     private String ngayCap;
@@ -26,7 +26,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(int idNhanVien, String hoTen, String ngaySinh, String sdt, String diaChi, int chucVu, boolean gioiTinh, String ngayVaoLam, String cmnd, String ngayCap, String tenDN, String matKhau, String email, String luongNV, String ghiChu, String hinhAnh) {
+    public NhanVien(int idNhanVien, String hoTen, String ngaySinh, String sdt, String diaChi, int chucVu, int gioiTinh, String ngayVaoLam, String cmnd, String ngayCap, String tenDN, String matKhau, String email, String luongNV, String ghiChu, String hinhAnh) {
         this.idNhanVien = idNhanVien;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -132,14 +132,14 @@ public class NhanVien {
     /**
      * @return the gioiTinh
      */
-    public boolean isGioiTinh() {
+    public int isGioiTinh() {
         return gioiTinh;
     }
 
     /**
      * @param gioiTinh the gioiTinh to set
      */
-    public void setGioiTinh(boolean gioiTinh) {
+    public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 

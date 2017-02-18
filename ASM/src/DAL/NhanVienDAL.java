@@ -36,13 +36,14 @@ public class NhanVienDAL {
     Tham số truyền vào là đối tượng nhân viên - @NhanVienDTO
      */
     public static void SuaNhanVien(NhanVien nv) {
-        String cauTruyVan = "set dateformat dmy Update NhanVien\n"
-                + "  set TenNhanVien = N'" + nv.getTenNhanVien() + "', GioiTinh = " + nv.getGioiTinh() + ", "
-                + "NgaySinh = '" + nv.getNgaySinh() + "', DiaChi = N'" + nv.getDiaChi() + "', "
-                + "SoDienThoai = '" + nv.getSDT() + "', NgayVaoLam = '" + nv.getNgayVaoLam() + "', TenDangNhap = '" + nv.getTenDangNhap() + "', "
-                + "MatKhau = '" + nv.getMatKhau() + "', GhiChu = N'" + nv.getGhiChu()
-                + "', Quyen = " + nv.getQuyen() + ", HinhAnh = '" + nv.getHinhAnh() + "' \n"
-                + "  where IDNhanVien = " + nv.getMaNhanVien();
+        String cauTruyVan = "set dateformat dmy Update nhanvien\n"
+                + "  set hoten = N'" + nv.getHoTen()+ "', ngaysinh = " + nv.getNgaySinh()+ ", "
+                + "sdt = '" + nv.getSdt()+ "', diachi = N'" + nv.getDiaChi() + "', "
+                + "chucvu = '" + nv.getChucVu()+ "', gioitinh = '" + nv.isGioiTinh()+ "', ngayvaolam = '" + nv.getNgayVaoLam()+ "', "
+                + "cmnd = '" + nv.getCmnd()+ "', ngaycap = N'" + nv.getNgayCap()
+                +"', email = " + nv.getEmail()
+                + "', luongnv = " + nv.getLuongNV()+ "', hinhanh = " + nv.getHinhAnh()+ "', ghichu = " + nv.getGhiChu()
+                + "  where idnhanvien = " + nv.getIdNhanVien();
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }

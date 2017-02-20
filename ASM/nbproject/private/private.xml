@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Computer/Documents/GitHub/Nhom-Xoi-Lac/ASM/src/Presentation/frmDangNhap.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/Presentation/frmNhanVien.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/BLL/NhanVienBLL.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/DTO/NhanVien.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/DAL/NhanVienDAL.java</file>
         </group>
     </open-files>
 </project-private>

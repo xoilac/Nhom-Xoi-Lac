@@ -236,13 +236,13 @@ public class NhanVienBLL {
     }
 
     public static void DoDuLieu(ResultSet rs, JTable table) {
-        Object[] obj = new Object[]{"STT", "IDNV", "HoTen", "NgaySinh", "DienThoai", "DiaChi", "ChucVu", "GioiTinh", "NgayVaoLam", "CMND", "NgayCap", "Email", "Luong", "GhiChu"};
+        Object[] obj = new Object[]{"STT", "IDNV", "HoTen", "NgaySinh", "DienThoai", "DiaChi", "ChucVu", "GioiTinh", "NgayVaoLam", "CMND", "NgayCap", "Email", "Luong","NoiCap", "GhiChu"};
         DefaultTableModel tableModel = new DefaultTableModel(obj, 0);
         table.setModel(tableModel);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
             while (rs.next()) {
-                Object[] item = new Object[14];
+                Object[] item = new Object[15];
                 item[0] = table.getRowCount() + 1;
                 item[1] = rs.getInt("idnhanvien");
                 item[2] = rs.getString("hoten");
@@ -261,7 +261,8 @@ public class NhanVienBLL {
 
                 item[11] = rs.getString("email");
                 item[12] = rs.getString("luongnv");
-                item[13] = rs.getString("ghichu");
+                item[13] = rs.getString("noicap");
+                item[14] = rs.getString("ghichu");
                 tableModel.addRow(item);
             }
         } catch (SQLException ex) {

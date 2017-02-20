@@ -36,14 +36,12 @@ public class NhanVienDAL {
     Tham số truyền vào là đối tượng nhân viên - @NhanVienDTO
      */
     public static void SuaNhanVien(NhanVien nv) {
-        String cauTruyVan = "set dateformat dmy Update nhanvien\n"
-                + "  set hoten = N'" + nv.getHoTen()+ "', ngaysinh = " + nv.getNgaySinh()+ ", "
-                + "sdt = '" + nv.getSdt()+ "', diachi = N'" + nv.getDiaChi() + "', "
-                + "chucvu = '" + nv.getChucVu()+ "', gioitinh = '" + nv.isGioiTinh()+ "', ngayvaolam = '" + nv.getNgayVaoLam()+ "', "
-                + "cmnd = '" + nv.getCmnd()+ "', ngaycap = N'" + nv.getNgayCap()
-                +"', email = " + nv.getEmail()
-                + "', luongnv = " + nv.getLuongNV()+ "', hinhanh = " + nv.getHinhAnh()+ "', ghichu = " + nv.getGhiChu()
-                + "  where idnhanvien = " + nv.getIdNhanVien();
+        String cauTruyVan = "Update nhanvien set hoten = '"+nv.getHoTen()+"', ngaysinh = STR_TO_DATE('"+nv.getNgaySinh()+"','%d/%m/%Y'),"
+                + " sdt = '"+nv.getSdt()+"', diachi = N'"+nv.getDiaChi()+"', chucvu = '"+nv.getChucVu()+"', gioitinh = b'"+nv.isGioiTinh()+"',"
+                + " ngayvaolam = STR_TO_DATE('"+nv.getNgayVaoLam()+"','%d/%m/%Y'),cmnd = '"+nv.getCmnd()+"',"
+                + " ngaycap = STR_TO_DATE('"+nv.getNgayCap()+"','%d/%m/%Y'),  email = '"+nv.getEmail()+"', luongnv = '"+nv.getLuongNV()+"',"
+                + " hinhanh = '"+nv.getHinhAnh()+"', ghichu = '"+nv.getGhiChu()+"',"
+                + "noicap='"+nv.getNoicap()+"'  where idnhanvien = "+nv.getIdNhanVien()+"";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }

@@ -777,7 +777,7 @@ public class frmNhanVien extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
         //Lấy dữ liệu từ form gán vào các biến
-        String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong;
+        String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong,noicap;
         tenNV = txtTenNhanVien.getText().trim();
         diaChi = txtDiaChi.getText().trim();
         sdt = txtSDT.getText().trim();
@@ -788,7 +788,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         luong = txtLuong.getText().trim();
         cmnd = txtCMND.getText().trim();
         ghiChu = txtaGhiChu.getText().trim();
-
+        noicap=txtnoicap.getText().trim();
         //Gọi hàm lấy ID của phần tử trong cbb
 //        int chucVu = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbchucvu));
         //Gọi hàm đổi giới tính sang int
@@ -813,7 +813,7 @@ public class frmNhanVien extends javax.swing.JFrame {
 
 //        String hinhAnh = f.getName();
         //Tạo đối tượng NhanVien từ DTO
-        NhanVien nv = new NhanVien(0, tenNV, ngaySinh, sdt, diaChi, 1, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, "unknown.jpg");
+        NhanVien nv = new NhanVien(0, tenNV, ngaySinh, sdt, diaChi, 1, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, "unknown.jpg",noicap);
 
         //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
         NhanVienBLL.ThemNhanVien(nv);
@@ -880,12 +880,12 @@ public class frmNhanVien extends javax.swing.JFrame {
         txtMaNhanVien.setText(tblNhanVien.getValueAt(index, 1).toString());
         txtTenNhanVien.setText(tblNhanVien.getValueAt(index, 2).toString());
 
-        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 13).toString());
+        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 14).toString());
         txtDiaChi.setText(tblNhanVien.getValueAt(index, 5).toString());
         txtSDT.setText(tblNhanVien.getValueAt(index, 4).toString());
         txtEmail.setText(tblNhanVien.getValueAt(index, 11).toString());
         txtCMND.setText(tblNhanVien.getValueAt(index, 9).toString());
-        
+        txtnoicap.setText(tblNhanVien.getValueAt(index, 13).toString());
         txtLuong.setText(tblNhanVien.getValueAt(index, 12).toString());
         DoiDateChooser(dateNgayCap).setText(tblNhanVien.getValueAt(index, 10).toString());
         //Gọi hàm đổi sang ô text
@@ -920,7 +920,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         try {
             //Lấy dữ liệu từ form gán vào các biến
 //            String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong;
-            String  tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong;
+            String  tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong,noicap;
             int idnv=Integer.parseInt(txtMaNhanVien.getText());
             tenNV = txtTenNhanVien.getText().trim();
             diaChi = txtDiaChi.getText().trim();
@@ -932,7 +932,7 @@ public class frmNhanVien extends javax.swing.JFrame {
             luong = txtLuong.getText().trim();
             cmnd = txtCMND.getText().trim();
             ghiChu = txtaGhiChu.getText().trim();
-//
+            noicap=txtnoicap.getText().trim();
 //            //Gọi hàm lấy ID của phần tử trong cbb
             int quyen = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbchucvu));
 //
@@ -976,7 +976,7 @@ public class frmNhanVien extends javax.swing.JFrame {
 
 //        String hinhAnh = f.getName();
             //Tạo đối tượng NhanVien từ DTO
-            NhanVien nv = new NhanVien(idnv, tenNV, ngaySinh, sdt, diaChi, quyen, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, hinhAnh);
+            NhanVien nv = new NhanVien(idnv, tenNV, ngaySinh, sdt, diaChi, quyen, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, hinhAnh,noicap);
 
             //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
             NhanVienBLL.SuaNhanVien(nv);

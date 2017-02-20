@@ -22,11 +22,11 @@ public class NhanVien {
     private String luongNV;
     private String ghiChu;
     private String hinhAnh;  
-    
+    private String noicap;
     public NhanVien() {
     }
 
-    public NhanVien(int idNhanVien, String hoTen, String ngaySinh, String sdt, String diaChi, int chucVu, int gioiTinh, String ngayVaoLam, String cmnd, String ngayCap, String tenDN, String matKhau, String email, String luongNV, String ghiChu, String hinhAnh) {
+    public NhanVien(int idNhanVien, String hoTen, String ngaySinh, String sdt, String diaChi, int chucVu, int gioiTinh, String ngayVaoLam, String cmnd, String ngayCap, String tenDN, String matKhau, String email, String luongNV, String ghiChu, String hinhAnh, String noicap) {
         this.idNhanVien = idNhanVien;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -43,7 +43,18 @@ public class NhanVien {
         this.luongNV = luongNV;
         this.ghiChu = ghiChu;
         this.hinhAnh = hinhAnh;
+        this.noicap = noicap;
     }
+
+    public String getNoicap() {
+        return noicap;
+    }
+
+    public void setNoicap(String noicap) {
+        this.noicap = noicap;
+    }
+
+    
 
     /**
      * @return the idNhanVien

@@ -254,8 +254,18 @@
                                 <a href="baodanh.jsp">Điểm Danh</a>
                             </li>
                         </ul>
+                        
                     </li>
-                    
+                    <li>
+                        <a href="chamcong.jsp"><i class="fa fa-laptop fa-fw"></i> Chấm Công Nhân viên<span ></span></a>
+                        <ul class="nav nav-second-level">
+                            
+                            <li>
+                                <a href="chamcong.jsp">Chấm Công</a>
+                            </li>
+                        </ul>
+                        
+                    </li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

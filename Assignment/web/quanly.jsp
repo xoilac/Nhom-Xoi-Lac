@@ -92,8 +92,8 @@
                                             <th>Ngày sinh</th> 
                                             <th>Giới tính</th> 
                                             <th>Ngày vào làm</th> 
-                                            <th>Số ngày làm</th> 
-                                            <th>Lương</th> 
+                                            
+                                             
 
                                             <th>Hình đại diện</th>
 
@@ -116,8 +116,7 @@
                                             <th>05/02/1997</th>
                                             <th>Nam</th>
                                             <th>12/12/2016</th>
-                                            <th>30</th>
-                                            <th>6000000 vnđ</th>
+                                            
                                             <th><img src="images/tải xuống.jpg" alt=""width="50px"height="50px"/></th> 
 
 

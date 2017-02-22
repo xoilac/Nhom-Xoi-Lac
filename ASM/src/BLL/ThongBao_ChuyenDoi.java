@@ -222,7 +222,7 @@ public class ThongBao_ChuyenDoi {
     /*
     Hàm kiểm tra định dạng email trả về True - False
      */
-    public boolean CheckEmail(String chuoiCanKiemTra) {
+    public static boolean CheckEmail(String chuoiCanKiemTra) {
         boolean blnKetQua = false;
 
         Pattern email = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"

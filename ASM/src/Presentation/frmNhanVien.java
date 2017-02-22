@@ -777,7 +777,7 @@ public class frmNhanVien extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
         //Lấy dữ liệu từ form gán vào các biến
-        String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong,noicap;
+        String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong, noicap;
         tenNV = txtTenNhanVien.getText().trim();
         diaChi = txtDiaChi.getText().trim();
         sdt = txtSDT.getText().trim();
@@ -788,9 +788,9 @@ public class frmNhanVien extends javax.swing.JFrame {
         luong = txtLuong.getText().trim();
         cmnd = txtCMND.getText().trim();
         ghiChu = txtaGhiChu.getText().trim();
-        noicap=txtnoicap.getText().trim();
+        noicap = txtnoicap.getText().trim();
         //Gọi hàm lấy ID của phần tử trong cbb
-//        int chucVu = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbchucvu));
+        int chucVu = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbchucvu));
         //Gọi hàm đổi giới tính sang int
         int gioiTinh = GioiTinhBoolean(radNam);
         Date randomDate = new Date();
@@ -799,31 +799,24 @@ public class frmNhanVien extends javax.swing.JFrame {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
-        Date birthday = new Date();
-        Date ngayVL = new Date();
+        
 
-//        try {
-//            birthday = sdf.parse(ngaySinh);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(frmNhanVien.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        birthday = ngaySinh;
-        sdf.format(ngayVL);
-//        ghiFileAnh(image, f);
+//        
+        ghiFileAnh(image, f);
 
-//        String hinhAnh = f.getName();
+        String hinhAnh = f.getName();
         //Tạo đối tượng NhanVien từ DTO
-        NhanVien nv = new NhanVien(0, tenNV, ngaySinh, sdt, diaChi, 1, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, "unknown.jpg",noicap);
+        NhanVien nv = new NhanVien(0, tenNV, ngaySinh, sdt, diaChi, chucVu, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, hinhAnh, noicap);
 
         //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
         NhanVienBLL.ThemNhanVien(nv);
-        ResultSet rs = NhanVienBLL.LayNhanVien();
+//        ResultSet rs = NhanVienBLL.LayNhanVien();
         //Thực hiện đổ dữ liệu vào table
-        NhanVienBLL.DoDuLieu(rs, tblNhanVien);
+//        NhanVienBLL.DoDuLieu(rs, tblNhanVien);
         //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
-//        ResultSet rs = NhanVienBLL.LayThongTinNhanVien();
+        ResultSet rs = NhanVienBLL.LayThongTinNhanVien();
         //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
-//        NhanVienBLL.DoDuLieuNhanVien(rs, tblNhanVien);
+        NhanVienBLL.DoDuLieuNhanVien(rs, tblNhanVien);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -874,45 +867,45 @@ public class frmNhanVien extends javax.swing.JFrame {
         Mục đích: lưu vị trí dòng đầu tiên được chọn trong table
          */
 
-        int index = tblNhanVien.getSelectedRow();
-
-        //Gán các textfield trong form là các giá trị của dòng được chọn với vị trí index
-        txtMaNhanVien.setText(tblNhanVien.getValueAt(index, 1).toString());
-        txtTenNhanVien.setText(tblNhanVien.getValueAt(index, 2).toString());
-
-        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 14).toString());
-        txtDiaChi.setText(tblNhanVien.getValueAt(index, 5).toString());
-        txtSDT.setText(tblNhanVien.getValueAt(index, 4).toString());
-        txtEmail.setText(tblNhanVien.getValueAt(index, 11).toString());
-        txtCMND.setText(tblNhanVien.getValueAt(index, 9).toString());
-        txtnoicap.setText(tblNhanVien.getValueAt(index, 13).toString());
-        txtLuong.setText(tblNhanVien.getValueAt(index, 12).toString());
-        DoiDateChooser(dateNgayCap).setText(tblNhanVien.getValueAt(index, 10).toString());
-        //Gọi hàm đổi sang ô text
-        DoiDateChooser(dateNgayVaolam).setText(tblNhanVien.getValueAt(index, 8).toString());
-        DoiDateChooser(dateNgaySinh).setText(tblNhanVien.getValueAt(index, 3).toString());
-        //Gọi hàm chọn radio button phù hợp
-        String gioiTinh = tblNhanVien.getValueAt(index, 7).toString();
-        chonRadio(gioiTinh, radNam, radNu);
-
-        //Tạo biến và gọi hàm chuyển đổi combobox
-        String chucvu = tblNhanVien.getValueAt(index, 6).toString();
-        ComboBoxBLL.setSelectedCombobox(cbbchucvu, chucvu);
-
-        String idnhanvien = tblNhanVien.getValueAt(index, 1).toString();
-        String fileAnh = NhanVienBLL.LayAnh(idnhanvien);
-        /*
-        Thực hiện đọc ảnh của từng nhân viên
-         */
-        File anh = new File("image\\Nhan_vien\\" + fileAnh);
-        try {
-            image = DocFileAnh(anh);
-            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
-        } catch (NullPointerException e) {
-            anh = new File(macDinh);
-            image = DocFileAnh(anh);
-            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
-        }
+//        int index = tblNhanVien.getSelectedRow();
+//
+//        //Gán các textfield trong form là các giá trị của dòng được chọn với vị trí index
+//        txtMaNhanVien.setText(tblNhanVien.getValueAt(index, 1).toString());
+//        txtTenNhanVien.setText(tblNhanVien.getValueAt(index, 2).toString());
+//
+//        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 14).toString());
+//        txtDiaChi.setText(tblNhanVien.getValueAt(index, 5).toString());
+//        txtSDT.setText(tblNhanVien.getValueAt(index, 4).toString());
+//        txtEmail.setText(tblNhanVien.getValueAt(index, 11).toString());
+//        txtCMND.setText(tblNhanVien.getValueAt(index, 9).toString());
+//        txtnoicap.setText(tblNhanVien.getValueAt(index, 13).toString());
+//        txtLuong.setText(tblNhanVien.getValueAt(index, 12).toString());
+//        DoiDateChooser(dateNgayCap).setText(tblNhanVien.getValueAt(index, 10).toString());
+//        //Gọi hàm đổi sang ô text
+//        DoiDateChooser(dateNgayVaolam).setText(tblNhanVien.getValueAt(index, 8).toString());
+//        DoiDateChooser(dateNgaySinh).setText(tblNhanVien.getValueAt(index, 3).toString());
+//        //Gọi hàm chọn radio button phù hợp
+//        String gioiTinh = tblNhanVien.getValueAt(index, 7).toString();
+//        chonRadio(gioiTinh, radNam, radNu);
+//
+//        //Tạo biến và gọi hàm chuyển đổi combobox
+//        String chucvu = tblNhanVien.getValueAt(index, 6).toString();
+//        ComboBoxBLL.setSelectedCombobox(cbbchucvu, chucvu);
+//
+//        String idnhanvien = tblNhanVien.getValueAt(index, 1).toString();
+//        String fileAnh = NhanVienBLL.LayAnh(idnhanvien);
+//        /*
+//        Thực hiện đọc ảnh của từng nhân viên
+//         */
+//        File anh = new File("image\\Nhan_vien\\" + fileAnh);
+//        try {
+//            image = DocFileAnh(anh);
+//            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+//        } catch (NullPointerException e) {
+//            anh = new File(macDinh);
+//            image = DocFileAnh(anh);
+//            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+//        }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -920,8 +913,8 @@ public class frmNhanVien extends javax.swing.JFrame {
         try {
             //Lấy dữ liệu từ form gán vào các biến
 //            String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong;
-            String  tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong,noicap;
-            int idnv=Integer.parseInt(txtMaNhanVien.getText());
+            String tenNV, diaChi, sdt, ngaySinh, ngayVaoLam, ghiChu, cmnd, ngayCap, email, luong, noicap;
+            int idnv = Integer.parseInt(txtMaNhanVien.getText());
             tenNV = txtTenNhanVien.getText().trim();
             diaChi = txtDiaChi.getText().trim();
             sdt = txtSDT.getText().trim();
@@ -932,7 +925,7 @@ public class frmNhanVien extends javax.swing.JFrame {
             luong = txtLuong.getText().trim();
             cmnd = txtCMND.getText().trim();
             ghiChu = txtaGhiChu.getText().trim();
-            noicap=txtnoicap.getText().trim();
+            noicap = txtnoicap.getText().trim();
 //            //Gọi hàm lấy ID của phần tử trong cbb
             int quyen = Integer.parseInt(ComboBoxBLL.getSelectedItemID(cbbchucvu));
 //
@@ -964,7 +957,7 @@ public class frmNhanVien extends javax.swing.JFrame {
             String hinhAnh = f.getName();
             Date birthday = new Date();
             Date ngayVL = new Date();
-            
+
 //        try {
 //            birthday = sdf.parse(ngaySinh);
 //        } catch (ParseException ex) {
@@ -976,11 +969,11 @@ public class frmNhanVien extends javax.swing.JFrame {
 
 //        String hinhAnh = f.getName();
             //Tạo đối tượng NhanVien từ DTO
-            NhanVien nv = new NhanVien(idnv, tenNV, ngaySinh, sdt, diaChi, quyen, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, hinhAnh,noicap);
+            NhanVien nv = new NhanVien(idnv, tenNV, ngaySinh, sdt, diaChi, quyen, gioiTinh, ngayVaoLam, cmnd, ngayCap, "", "", email, luong, ghiChu, hinhAnh, noicap);
 
             //Gọi hàm ThemNhanVien từ BLL để tiến hành thêm vào CSDL
             NhanVienBLL.SuaNhanVien(nv);
-            
+
             ResultSet rs = NhanVienBLL.LayNhanVien();
             //Thực hiện đổ dữ liệu vào table
             NhanVienBLL.DoDuLieu(rs, tblNhanVien);

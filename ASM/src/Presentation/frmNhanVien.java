@@ -28,8 +28,8 @@ public class frmNhanVien extends javax.swing.JFrame {
     Date currentDate = new Date();
     SimpleDateFormat sdf2 = new SimpleDateFormat("ddMMyyhhmmss");
 
-    int width = 172;    //width of the image
-    int height = 140;   //height of the image
+    int width = 240;    //width of the image
+    int height = 128;   //height of the image
     File f = null;
     BufferedImage image = null;
 
@@ -241,9 +241,9 @@ public class frmNhanVien extends javax.swing.JFrame {
             }
         });
 
-        dtpAnhNV.setBackground(new java.awt.Color(255, 255, 255));
+        dtpAnhNV.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
 
-        lblPicture.setToolTipText("172x140 pixel");
+        lblPicture.setToolTipText("240x128 pixel");
 
         dtpAnhNV.setLayer(lblPicture, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -263,6 +263,8 @@ public class frmNhanVien extends javax.swing.JFrame {
                 .addComponent(lblPicture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        lblPicture.getAccessibleContext().setAccessibleDescription("240x128 pixel");
 
         btnTaoMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N

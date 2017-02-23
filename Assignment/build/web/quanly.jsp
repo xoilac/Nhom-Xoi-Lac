@@ -138,12 +138,13 @@
                                 </nav>
                             </div>
                             <%//                                }
-                            %>
+%>
 
                         </div>
                     </section>
-
                 </div>
-                <%--<%@include file="includes/footer.jsp" %>--%>
-                </body>
-                </html>
+            </div>
+        </div>
+        <%--<%@include file="includes/footer.jsp" %>--%>
+    </body>
+</html>

@@ -17,7 +17,7 @@ public class NhanVienServices {
         try {
             tx = session.getTransaction();
             tx.begin();
-            session.saveOrUpdate(tx);
+            session.saveOrUpdate(nv);
             tx.commit();
             return true;
         } catch (Exception e) {

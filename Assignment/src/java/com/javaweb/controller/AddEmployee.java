@@ -56,7 +56,10 @@ public class AddEmployee extends HttpServlet {
                 //File Upload
                 String folderUpload = "file-upload";
                 String rootPath = getServletContext().getRealPath("/");
-                filePath = rootPath + folderUpload;
+                
+                String directory = rootPath.substring(0, rootPath.indexOf("build"));
+                
+                filePath = directory+"web\\" + folderUpload;
                 response.setContentType("text/html;charset=UTF-8");
                 java.io.PrintWriter out = response.getWriter();
 
@@ -75,12 +78,12 @@ public class AddEmployee extends HttpServlet {
                 String hoTen = "", strNgaySinh = "", sdt = "", diaChi = "", email = "", valGioiTinh = "",
                 strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "";
                 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 boolean gioiTinh = false;
         
-                Date ngaySinh = null;
-                Date ngayVaoLam = null;
-                Date ngayCap = null;
+                Date ngaySinh = new Date();
+                Date ngayVaoLam = new Date();
+                Date ngayCap = new Date();
 
                 //Parse the request to get file items.
                 List fileItems = upload.parseRequest(request);
@@ -94,10 +97,6 @@ public class AddEmployee extends HttpServlet {
                     {
                         //do field specific process
                         String fieldName = fi.getFieldName();
-
-//                        if (fieldName.equals("idPT")) {
-//                            idpt = fi.getString("UTF-8");
-//                        } else 
                         if (fieldName.equals("fullname")) 
                         {
                             hoTen = fi.getString("UTF-8");
@@ -132,9 +131,9 @@ public class AddEmployee extends HttpServlet {
                         {
                             ghiChu = fi.getString("UTF-8");
                         } 
-                        out.println(fi.getString("UTF-8")+ " "+fieldName);
-                        response.getWriter().println("<h2> sadsasadsad" + fi.getString("UTF-8") + " " + fieldName + "</h2>");
-                        response.getWriter().println("<h3>" + hoTen + " "+ ghiChu+ " "+" "+gioiTinh + " " + strNgaySinh + "</h3>");
+//                        out.println(fi.getString("UTF-8")+ " "+fieldName);
+//                        response.getWriter().println("<h2> sadsasadsad" + fi.getString("UTF-8") + " " + fieldName + "</h2>");
+//                        response.getWriter().println("<h3>" + hoTen + " "+ ghiChu+ " "+" "+gioiTinh + " " + strNgaySinh + filePath + "</h3>");
 //                        response.getWriter().println("<h2>" + item.getFieldName() + " item.getname " + item.getName() + " item " + item + "</h2>");
                     } else {
 //                        response.getWriter().println("<h2> else else" + fi.getString("UTF-8") + " " + fi.getFieldName() + "</h2>");
@@ -175,15 +174,17 @@ public class AddEmployee extends HttpServlet {
                 } catch (ParseException ex) {
                     Logger.getLogger(AddEmployee.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+//                ngaySinh = (Date)strNgaySinh;
 
                 if (valGioiTinh.equals("Nam")) {
                     gioiTinh = true;
                 }
                 nv = new Nhanvien(hoTen, ngaySinh, sdt, diaChi, 1, gioiTinh, ngayVaoLam, cmnd, ngayCap, "tendn", "mk", email, "0", ghiChu, hinhAnh, noiCap);
 
-//                nvs.ThemNhanVien(nv);
+                nvs.ThemNhanVien(nv);
 
-//                response.sendRedirect("quanly.jsp");
+                response.sendRedirect("quanly.jsp");
                 
             } catch (Exception fue) {
                 System.out.println(fue.toString());

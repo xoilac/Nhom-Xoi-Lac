@@ -1,5 +1,5 @@
 package com.javaweb.model;
-// Generated Feb 13, 2017 8:24:56 AM by Hibernate Tools 4.3.1
+// Generated Feb 23, 2017 11:29:16 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -25,6 +25,8 @@ public class Nhanvien  implements java.io.Serializable {
      private String email;
      private String luongnv;
      private String ghichu;
+     private String hinhanh;
+     private String noicap;
 
     public Nhanvien() {
     }
@@ -42,7 +44,7 @@ public class Nhanvien  implements java.io.Serializable {
         this.matkhau = matkhau;
         this.luongnv = luongnv;
     }
-    public Nhanvien(String hoten, Date ngaysinh, String sdt, String diachi, int chucvu, boolean gioitinh, Date ngayvaolam, String cmnd, Date ngaycap, String tendn, String matkhau, String email, String luongnv, String ghichu) {
+    public Nhanvien(String hoten, Date ngaysinh, String sdt, String diachi, int chucvu, boolean gioitinh, Date ngayvaolam, String cmnd, Date ngaycap, String tendn, String matkhau, String email, String luongnv, String ghichu, String hinhanh, String noicap) {
        this.hoten = hoten;
        this.ngaysinh = ngaysinh;
        this.sdt = sdt;
@@ -57,6 +59,8 @@ public class Nhanvien  implements java.io.Serializable {
        this.email = email;
        this.luongnv = luongnv;
        this.ghichu = ghichu;
+       this.hinhanh = hinhanh;
+       this.noicap = noicap;
     }
    
     public Integer getIdnhanvien() {
@@ -163,6 +167,20 @@ public class Nhanvien  implements java.io.Serializable {
     
     public void setGhichu(String ghichu) {
         this.ghichu = ghichu;
+    }
+    public String getHinhanh() {
+        return this.hinhanh;
+    }
+    
+    public void setHinhanh(String hinhanh) {
+        this.hinhanh = hinhanh;
+    }
+    public String getNoicap() {
+        return this.noicap;
+    }
+    
+    public void setNoicap(String noicap) {
+        this.noicap = noicap;
     }
 
 

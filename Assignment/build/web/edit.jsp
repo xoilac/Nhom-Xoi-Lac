@@ -57,15 +57,15 @@
 
                 <div class="form-group">
 
-                    <input type="file" name="file" size="50" onchange="loadFile(event)" style="margin-top: 20px;    margin-left: 149px;border:none;"/>
-                    <img id="output" src="" style="width:100px;height:100px;    margin-left: 223px;">
-                    <script type="text/javascript">
+                    <input type="file" name="file" size="50" onchange="loadFile(event,'suanv')" style="margin-top: 20px;    margin-left: 149px;border:none;"/>
+                    <img id="outputsuanv" src="" style="width:100px;height:100px;    margin-left: 223px;">
+<!--                    <script type="text/javascript">
                         var loadFile = function (event) {
                             var ouput = document.getElementById('ouput');
                             output.src = URL.createObjectURL(event.target.files[0]);
                         }
 
-                    </script>
+                    </script>-->
                 </div>
 
 

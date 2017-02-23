@@ -30,8 +30,9 @@ public class loginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/quanly.jsp";
-        getServletContext().getRequestDispatcher(url).forward(request, response);
+//        String url = "/quanly.jsp";
+//        getServletContext().getRequestDispatcher(url).forward(request, response);
+        response.sendRedirect("quanly.jsp");
 //        try (PrintWriter out = response.getWriter()) {
 //            /* TODO output your page here. You may use following sample code. */
 //            out.println("<!DOCTYPE html>");

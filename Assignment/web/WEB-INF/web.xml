@@ -8,6 +8,10 @@
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>com.javaweb.controller.loginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddEmployee</servlet-name>
+        <servlet-class>com.javaweb.controller.AddEmployee</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/AddEmployee</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

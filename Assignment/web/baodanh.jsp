@@ -40,7 +40,8 @@
                                     <label style="    ">
                                         <select name="tacvu" class="form-control-static">
                                             <option value="">Tác vụ</option>
-                                            <option value="xoa">Điểm danh</option>
+                                            <option value="true">Điểm danh</option>
+                                            <option value="false">Vắng</option>
                                         </select>
                                         <input class="btn btn-danger" type="submit" value="Thực hiện" />
                                     </label>

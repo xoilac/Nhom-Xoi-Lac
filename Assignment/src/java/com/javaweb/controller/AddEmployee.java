@@ -76,7 +76,7 @@ public class AddEmployee extends HttpServlet {
                 upload.setSizeMax(maxMemSize);
 
                 String hoTen = "", strNgaySinh = "", sdt = "", diaChi = "", email = "", valGioiTinh = "",
-                strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "";
+                strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "Unknown.jpg";
                 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 boolean gioiTinh = false;

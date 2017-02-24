@@ -5,109 +5,97 @@ var loadFile = function (event, idthem) {
 
     output.src = URL.createObjectURL(event.target.files[0]);
 };
-$(function () {
-    function previewImages() {
+//$(function () {
+//    function previewImages() {
+//
+//        var preview = $('#gallery').empty();
+//        if (this.files)
+//            $.each(this.files, readAndPreview);
+//
+//        function readAndPreview(i, file) {
+//
+//            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+//                return alert(file.name + " is not an image");
+//            } // else...
+//
+//            var reader = new FileReader();
+//
+//            $(reader).on("load", function () {
+//                preview.append($("<img/>", {
+//                    src: this.result, height: 100, class: 'img-thumbnail', title: file.name
+//                }));
+//            });
+//            reader.readAsDataURL(file);
+//        }
+//    }
+//    $('#prod-images').on("change", previewImages);
+//});
 
-        var preview = $('#gallery').empty();
-        if (this.files)
-            $.each(this.files, readAndPreview);
 
-        function readAndPreview(i, file) {
-
-            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
-                return alert(file.name + " is not an image");
-            } // else...
-
-            var reader = new FileReader();
-
-            $(reader).on("load", function () {
-                preview.append($("<img/>", {
-                    src: this.result, height: 100, class: 'img-thumbnail', title: file.name
-                }));
-            });
-            reader.readAsDataURL(file);
-        }
-    }
-    $('#prod-images').on("change", previewImages);
-});
-
-//Hàm kiểm tra thêm sản phẩm
-
+/***********************************************************************************************/
+//Hàm kiểm tra thêm nhân viên
 $(window).ready(function () {
-    $('#addproduct').validate({
+    $('#fAddEmp').validate({
         onchange: true,
         rules: {
-            'prod-name': "required",
-            'prod-describe': "required",
-            'prod-price': {
-                required: true,
-                number: true,
-                digits: true
-            }, 'prod-discount': "number",
-            'prod-quantity': {
-                required: true,
-                number: true,
-                digits: true
+            'fullname': "required",
+            'birthday':{
+                required:true
             },
-            'prod-unit': "required",
-            'loaiSP': "required",
-            'prod-model': "required",
-            'prod-cpu': "required",
-            'prod-ram': "required",
-            'prod-resolution': "required",
-            'prod-size': {
+            'dienthoai': {
                 required: true,
                 number: true
             },
-            'prod-weight': {
-                required: true,
-                number: true
+            'address': "required",
+            'email':{ 
+                required:true,
+                email:true
             },
-            'prod-os': "required",
-            'prod-thumbnail': {
+            'ngayVaoLam': "required",
+            'cmnd': {
                 required: true,
+                number: true,
+                minlength:9,
+                maxlength:9
+            },
+            'ngayCap': "required",
+            'noiCap': "required",
+            'hinhAnh': {
                 extension: "jpg|png|gif|jpeg"
             }
         },
         messages: {
-            'prod-name': "Vui lòng nhập tên sản phẩm.",
-            'prod-describe': "Vui lòng nhập mô tả.",
-            'prod-price': {
-                required: "Vui lòng nhập giá.",
-                number: "Giá chỉ có số.",
-                digits: "Giá phải trên 0."
+             'fullname': "Nhập họ tên nhân viên",
+            'birthday':{ 
+                required:"Chọn ngày sinh nhân viên"
             },
-            'prod-discount': "Không phải số.",
-            'prod-quantity': {
-                required: "Vui lòng nhập số lượng.",
-                number: "Giá chỉ có số.",
-                digits: "Số lượng phải trên 0."
+            'dienthoai': {
+                required: "Nhập điện thoại nhân viên",
+                number: "Nhập đúng kiểu số"
             },
-            'prod-unit': "Vui lòng nhập đơn vị.",
-            'loaiSP': "Vui lòng chọn loại sản phẩm.",
-            'prod-model': "Vui lòng nhập model.",
-            'prod-cpu': "Vui lòng nhập CPU.",
-            'prod-ram': "Vui lòng nhập bộ nhớ trong.",
-            'prod-resolution': "Vui lòng nhập độ phân giải.",
-            'prod-size': {
-                required: "Vui lòng nhập kích thước màn hình.",
-                number: "Chỉ nhập số."
+            'address': "Nhập địa chỉ nhân viên",
+            'email':{ 
+                required:"Nhập email nhân viên",
+                email:"Nhập đúng định dạng email. VD: abc@xyz.ckj"
             },
-            'prod-weight': {
-                required: "Vui lòng nhập trọng lượng.",
-                number: "Chỉ nhập số."
+            'ngayVaoLam': "Chọn ngày vào làm",
+            'cmnd': {
+                required: "Nhập chứng minh thư nhân viên",
+                number: "Nhập đúng kiểu số",
+                minlength:"Chứng minh thư có 9 số",
+                maxlength:"Chứng minh thư có 9 số"
             },
-            'prod-os': "Vui lòng nhập hệ điều hành.",
-            'prod-thumbnail': {
-                required: "Vui lòng chọn hình đại diện.",
-                extension: "Ảnh sẽ có đuôi *.jpg, *.jpeg, *.gif hoặc *.png"
+            'ngayCap': "Chọn ngày cấp cmnd",
+            'noiCap': "Nhập nơi cấp cmnd",
+            'hinhAnh': {
+                extension: "Định dạng ảnh có kiểu jpg|png|gif|jpeg"
             }
         }
     });
 });
 
+/***********************************************************************************************/
 //Hàm kiểm tra thêm sản phẩm
-
 $(window).ready(function () {
     $('#editproduct').validate({
         onchange: true,

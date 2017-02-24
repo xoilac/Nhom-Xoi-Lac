@@ -72,9 +72,16 @@ html, body {width:100%; padding:0; margin:0;}
 .controls{width:50px;display:block;font-size:19px;font-weight:500;}
 .next {text-align:right;}
 /*override modal for demo only*/
-.modal-dialog {max-width:500px;padding-top: 90px;}
+.modal-dialog {/*max-width:500px;*/padding-top: 90px;}
 @media screen and (min-width: 768px){
 	.modal-dialog {width:500px;padding-top: 90px}          
+}
+.modal-dangky{
+    overflow: auto;
+    height: 600px;
+}
+.dialog-dangky{
+    width:600px;
 }
 
 /* ---------------------------------------------------------------------------- */

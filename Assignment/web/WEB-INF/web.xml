@@ -12,6 +12,14 @@
         <servlet-name>AddEmployee</servlet-name>
         <servlet-class>com.javaweb.controller.AddEmployee</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditnvServlet</servlet-name>
+        <servlet-class>com.javaweb.controller.EditnvServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DiemDanhServlet</servlet-name>
+        <servlet-class>com.javaweb.controller.DiemDanhServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>AddEmployee</servlet-name>
         <url-pattern>/AddEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditnvServlet</servlet-name>
+        <url-pattern>/EditnvServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DiemDanhServlet</servlet-name>
+        <url-pattern>/DiemDanhServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

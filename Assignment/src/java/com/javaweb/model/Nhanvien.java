@@ -27,7 +27,15 @@ public class Nhanvien  implements java.io.Serializable {
      private String ghichu;
      private String hinhanh;
      private String noicap;
+     private boolean trangthai;
 
+    public boolean isTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(boolean trangthai) {
+        this.trangthai = trangthai;
+    }
     public Nhanvien() {
     }
 

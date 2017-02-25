@@ -121,7 +121,7 @@
                                                 }
                                             %>
                                             <th><%=nvql.getNgayvaolam()%></th>
-                                            <th><img src="images/tải xuống.jpg" alt=""width="50px"height="50px"/></th> 
+                                            <th><img src="<%=getServletContext().getInitParameter("file-upload")%><%=nvql.getHinhanh() %>" alt=""width="80px"height="80px"/></th> 
                                             <td>
                                                 <a  href="#edit<%=nvql.getIdnhanvien()%>" data-toggle="modal">
                                                     <img src="images/edit-file-icon.png" alt=""/>
@@ -139,8 +139,8 @@
                                     </tbody>
                                 </table>
                             </form>
-                            <%--<%@include file="dangky.jsp" %>--%>
-                            <%--<%@include file="edit.jsp" %>--%>
+                            <%@include file="dangky.jsp" %>
+                            <%@include file="edit.jsp" %>
 
                             <%
                                 if (pageCount != 1) {

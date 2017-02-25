@@ -44,7 +44,7 @@ public class DiemDanhServlet extends HttpServlet {
                     id = aId[i];
                     pt = ps.getNVByID(id);
                     pt.setTrangthai(true);
-                    ps.Insernv(pt);
+//                    ps.Insernv(pt);
                 }
             }
 

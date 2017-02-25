@@ -54,7 +54,7 @@ public class AddEmployee extends HttpServlet {
 
             try {
                 //File Upload
-                String folderUpload = "file-upload";
+                String folderUpload = getServletContext().getInitParameter("file-upload");
                 String rootPath = getServletContext().getRealPath("/");
                 
                 String directory = rootPath.substring(0, rootPath.indexOf("build"));
@@ -76,7 +76,7 @@ public class AddEmployee extends HttpServlet {
                 upload.setSizeMax(maxMemSize);
 
                 String hoTen = "", strNgaySinh = "", sdt = "", diaChi = "", email = "", valGioiTinh = "",
-                strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "Unknown.jpg";
+                strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "unknown.jpg";
                 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 boolean gioiTinh = false;

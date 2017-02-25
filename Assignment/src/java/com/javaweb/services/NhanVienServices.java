@@ -53,26 +53,6 @@ public class NhanVienServices {
         }
         return null;
     }
-    public boolean Insernv(Nhanvien nv) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-
-            tx = session.getTransaction();
-            tx.begin();
-            session.saveOrUpdate(nv);
-            tx.commit();
-            return true;
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            System.out.println(e.toString());
-        } finally {
-            session.close();
-        }
-        return false;
-    }
     public ArrayList<Nhanvien> GetAllNV() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -80,7 +60,7 @@ public class NhanVienServices {
         try {
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from nhanvien");
+            Query query = session.createQuery("from Nhanvien");
             listNV = (ArrayList) query.list();
             tx.commit();
         } catch (Exception e) {
@@ -93,6 +73,7 @@ public class NhanVienServices {
         }
         return listNV;
     }
+    
     public int nvcount = 0;
     public ArrayList<Nhanvien> getAllNv(int pageSize, int pageNumber) {
         Session session = HibernateUtil.getSessionFactory().openSession();

@@ -33,7 +33,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class EditnvServlet extends HttpServlet {
 
     private String filePath;
-    private int maxMemSize;
+    private int maxMemSize = 10000 * 1024;
     private File file;
 
     /**
@@ -56,7 +56,7 @@ public class EditnvServlet extends HttpServlet {
 
             try {
                 //File Upload
-                String folderUpload = "file-upload";
+                String folderUpload = getServletContext().getInitParameter("file-upload");
                 String rootPath = getServletContext().getRealPath("/");
 
                 String directory = rootPath.substring(0, rootPath.indexOf("build"));
@@ -78,7 +78,7 @@ public class EditnvServlet extends HttpServlet {
                 upload.setSizeMax(maxMemSize);
 
                 String id = "", hoTen = "", strNgaySinh = "", sdt = "", diaChi = "", email = "", valGioiTinh = "",
-                        strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "Unknown.jpg";
+                        strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "unknown.jpg";
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 boolean gioiTinh = false;
@@ -98,30 +98,42 @@ public class EditnvServlet extends HttpServlet {
                     if (fi.isFormField()) {
                         //do field specific process
                         String fieldName = fi.getFieldName();
-                        if (fieldName.equals("fullname")) {
-                            hoTen = fi.getString("UTF-8");
-                        } else if (fieldName.equals("birthday")) {
-                            strNgaySinh = fi.getString("UTF-8");
-                        } else if (fieldName.equals("dienthoai")) {
-                            sdt = fi.getString("UTF-8");
-                        } else if (fieldName.equals("address")) {
-                            diaChi = fi.getString("UTF-8");
-                        } else if (fieldName.equals("email")) {
-                            email = fi.getString("UTF-8");
-                        } else if (fieldName.equals("gender")) {
-                            valGioiTinh = fi.getString("UTF-8");
-                        } else if (fieldName.equals("ngayVaoLam")) {
-                            strNgayVaoLam = fi.getString("UTF-8");
-                        } else if (fieldName.equals("cmnd")) {
-                            cmnd = fi.getString("UTF-8");
-                        } else if (fieldName.equals("ngayCap")) {
-                            strNgayCap = fi.getString("UTF-8");
-                        } else if (fieldName.equals("noiCap")) {
-                            noiCap = fi.getString("UTF-8");
-                        } else if (fieldName.equals("ghiChu")) {
-                            ghiChu = fi.getString("UTF-8");
-                        } else if (fi.getFieldName().equalsIgnoreCase("iduser")) {
+                        if (fi.getFieldName().equalsIgnoreCase("idnv")) 
+                        {
                             id = fi.getString("UTF-8");
+                        } else if (fieldName.equals("fullname")) 
+                        {
+                            hoTen = fi.getString("UTF-8");
+                        } else if (fieldName.equals("birthday")) 
+                        {
+                            strNgaySinh = fi.getString("UTF-8");
+                        } else if (fieldName.equals("dienthoai")) 
+                        {
+                            sdt = fi.getString("UTF-8");
+                        } else if (fieldName.equals("address")) 
+                        {
+                            diaChi = fi.getString("UTF-8");
+                        } else if (fieldName.equals("email")) 
+                        {
+                            email = fi.getString("UTF-8");
+                        } else if (fieldName.equals("gender")) 
+                        {
+                            valGioiTinh = fi.getString("UTF-8");
+                        } else if (fieldName.equals("ngayVaoLam")) 
+                        {
+                            strNgayVaoLam = fi.getString("UTF-8");
+                        } else if (fieldName.equals("cmnd")) 
+                        {
+                            cmnd = fi.getString("UTF-8");
+                        } else if (fieldName.equals("ngayCap")) 
+                        {
+                            strNgayCap = fi.getString("UTF-8");
+                        } else if (fieldName.equals("noiCap")) 
+                        {
+                            noiCap = fi.getString("UTF-8");
+                        } else if (fieldName.equals("ghiChu")) 
+                        {
+                            ghiChu = fi.getString("UTF-8");
                         }
 //                        out.println(fi.getString("UTF-8")+ " "+fieldName);
 //                        response.getWriter().println("<h2> sadsasadsad" + fi.getString("UTF-8") + " " + fieldName + "</h2>");
@@ -181,10 +193,13 @@ public class EditnvServlet extends HttpServlet {
                 snv.setGhichu(ghiChu);
                 snv.setNoicap(noiCap);
                 snv.setHinhanh(hinhAnh);
-                boolean rs = nvs.Insernv(snv);
+                
+                boolean rs = nvs.ThemNhanVien(snv);
                 if (rs) {
+                    Thread.sleep(5000);
                     response.sendRedirect("quanly.jsp");
                 }
+                
             } catch (Exception fue) {
                 System.out.println(fue.toString());
             }

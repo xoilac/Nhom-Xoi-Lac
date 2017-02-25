@@ -10,17 +10,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    String idnv = request.getParameter("idnv");
-%>
-<%            NhanVienServices nvs = new NhanVienServices();
-    ArrayList<Nhanvien> listNV = null;
+    NhanVienServices nvs = new NhanVienServices();
+    ArrayList<Nhanvien> eListNV = null;
 
-    listNV = nvs.GetAllNV();
+    eListNV = nvs.GetAllNV();
+
+    for (int i = 0; i < eListNV.size(); i++) {
+        Nhanvien nv = eListNV.get(i);
 %>
-<%                                    for (int i = 0; i < listNV.size(); i++) {
-        Nhanvien nv = listNV.get(i);
-%>
-<div id="edit<%=nv.getIdnhanvien()%>" style="margin-top: -65px;" class="modal fade" role="dialog">
+<div id="edit<%=nv.getIdnhanvien()%>" style="margin-top: -65px;" class="modal fade" role="dialog"><!--Modal nhan vien-->
     <div class="modal-dialog">
 
         <div class="modal-content">
@@ -29,7 +27,7 @@
                 <h4 style=" color: #05B2D2;   text-align: center;" class="modal-title"><i class="glyphicon glyphicon-user"></i> Sửa nhân viên</h4>
             </div>
 
-            <form class="form-horizontal" name="fUser"  action="EditnvServlet" method="post" id="fAddEmp" enctype="multipart/form-data">
+            <form class="form-horizontal" name="fUser"  action="EditnvServlet" method="post" id="fEditEmp" enctype="multipart/form-data">
                 <input style="display: none;" name="idnv" value="<%=nv.getIdnhanvien()%>" />
                 <div class="form-group">
                     <label class="control-label col-sm-2 col-md-3" for="fullname">Họ tên <em>*</em> </label>
@@ -116,23 +114,8 @@
                 </div>
 
                 <div class="form-group">
-                    <%
-                        if (nv.getHinhanh() != null) {
-                            String folderupload = getServletContext().getInitParameter("file-upload");
-                    %>
-                    <img class="img-thumbnail" src="<%=folderupload%><%=nv.getHinhanh()%>" />
-                    <%
-                        }
-                    %>
-                    <input type="file" name="hinhAnh" size="50" onchange="loadFile(event, 'themnv')" style="margin-top: 20px;    margin-left: 149px;border:none;"/>
-                    <img id="outputthemnv" src="" style="width:100px;height:100px;    margin-left: 223px;">
-                    <script type="text/javascript">
-                        var loadFile = function (event) {
-                            var ouput = document.getElementById('ouput');
-                            output.src = URL.createObjectURL(event.target.files[0]);
-                        }
-
-                    </script>
+                    <input type="file" name="hinhAnh" size="50" onchange="loadFile(event, 'suanv<%=nv.getIdnhanvien()%>')" style="margin-top: 20px;    margin-left: 149px;border:none;"/>
+                    <img id="outputsuanv<%=nv.getIdnhanvien() %>" src="<%=getServletContext().getInitParameter("file-upload")%><%=nv.getHinhanh()%>" style="width:100px;height:100px;    margin-left: 223px;">
                 </div>
 
                 <div class="form-group">
@@ -146,7 +129,9 @@
                 </div>
 
             </form>
-            <%}%>
         </div>
     </div>
 </div>
+<%
+    }
+%>

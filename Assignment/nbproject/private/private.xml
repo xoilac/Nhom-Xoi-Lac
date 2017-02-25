@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GiThub/Nhom-Xoi-Lac/Assignment/src/java/com/javaweb/model/Nhanvien.java</file>
-            <file>file:/D:/GiThub/Nhom-Xoi-Lac/Assignment/web/baodanh.jsp</file>
-            <file>file:/D:/GiThub/Nhom-Xoi-Lac/Assignment/src/java/com/javaweb/services/NhanVienServices.java</file>
-            <file>file:/D:/GiThub/Nhom-Xoi-Lac/Assignment/src/java/com/javaweb/controller/DiemDanhServlet.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/src/java/com/javaweb/controller/DiemDanhServlet.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/web/js/javascript.js</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/web/edit.jsp</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/src/java/com/javaweb/controller/EditnvServlet.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/web/baodanh.jsp</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/src/java/com/javaweb/controller/AddEmployee.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/web/quanly.jsp</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/src/java/com/javaweb/services/NhanVienServices.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/Nhom-Xoi-Lac/Assignment/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>

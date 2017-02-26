@@ -1,6 +1,7 @@
 package com.javaweb.services;
 
 import com.javaweb.hibernate.util.HibernateUtil;
+import com.javaweb.model.Luongnv;
 import com.javaweb.model.Nhanvien;
 import java.util.ArrayList;
 import org.hibernate.Query;
@@ -103,4 +104,5 @@ public class NhanVienServices {
 
         return listNV;
     }
+    
 }

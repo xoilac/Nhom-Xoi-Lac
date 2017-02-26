@@ -20,6 +20,14 @@
         <servlet-name>DiemDanhServlet</servlet-name>
         <servlet-class>com.javaweb.controller.DiemDanhServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditluongServlet</servlet-name>
+        <servlet-class>com.javaweb.controller.EditluongServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditchucvuServlet</servlet-name>
+        <servlet-class>com.javaweb.controller.EditchucvuServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -47,6 +55,14 @@
             file-upload/
         </param-value>
     </context-param>
+    <servlet-mapping>
+        <servlet-name>EditluongServlet</servlet-name>
+        <url-pattern>/EditluongServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditchucvuServlet</servlet-name>
+        <url-pattern>/EditchucvuServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

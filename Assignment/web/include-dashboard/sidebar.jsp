@@ -258,10 +258,17 @@
                     </li>
                     <li>
                         <a href="chamcong.jsp"><i class="fa fa-laptop fa-fw"></i> Chấm Công Nhân viên<span ></span></a>
+                        
+                        
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-laptop fa-fw"></i> Quản lý Lương<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            
                             <li>
-                                <a href="chamcong.jsp">Chấm Công</a>
+                                <a href="chucvu.jsp">Chức vụ</a>
+                            </li>
+                            <li>
+                                <a href="quanlyluong.jsp">Lương</a>
                             </li>
                         </ul>
                         

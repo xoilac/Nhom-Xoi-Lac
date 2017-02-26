@@ -78,7 +78,7 @@ public class EditnvServlet extends HttpServlet {
                 upload.setSizeMax(maxMemSize);
 
                 String id = "", hoTen = "", strNgaySinh = "", sdt = "", diaChi = "", email = "", valGioiTinh = "",
-                        strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "user1488110433065.jpg";
+                        strNgayVaoLam = "", cmnd = "", strNgayCap = "", noiCap = "", tenFile = "", ghiChu = "", hinhAnh = "unknown.jpg";
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 boolean gioiTinh = false;
@@ -148,11 +148,8 @@ public class EditnvServlet extends HttpServlet {
                         }
 
                         //call a method to upload file.
-                        if (fi.getFieldName().equals("hinhAnh")) {
-                            if (!fi.getName().equals("")) {
-                                hinhAnh = tenFile;
-                            }
-                        }
+                        
+
                     }
                 }
 
@@ -180,16 +177,15 @@ public class EditnvServlet extends HttpServlet {
                 snv.setEmail(email);
                 snv.setGhichu(ghiChu);
                 snv.setNoicap(noiCap);
-                snv.setHinhanh(hinhAnh);
+                
                 if (!tenFile.equals("")) {
-                    if (snv.getHinhanh()!= null) {
-                        if (!snv.getHinhanh().equals(tenFile)) {
-                            snv.setHinhanh(tenFile);
-                        }
-                    } else {
-                        snv.setHinhanh(tenFile);
-                    }
+                    hinhAnh = tenFile;
+                }else{
+                    hinhAnh = snv.getHinhanh();
                 }
+                
+                snv.setHinhanh(hinhAnh);
+
                 boolean rs = nvs.ThemNhanVien(snv);
                 if (rs) {
                     Thread.sleep(5000);

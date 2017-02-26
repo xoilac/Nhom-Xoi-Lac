@@ -12,14 +12,14 @@
 <!DOCTYPE html>
 <%
     LuongServices nvs = new LuongServices();
-    ArrayList<Luongnv> listluong = null;
+    ArrayList<Luongnv> eListLuong = null;
 
-    listluong = nvs.GetAllluongnv();
+    eListLuong = nvs.GetAllluongnv();
 
-    for (int i = 0; i < listluong.size(); i++) {
-        Luongnv nv = listluong.get(i);
+    for (int i = 0; i < eListLuong.size(); i++) {
+        Luongnv nv = eListLuong.get(i);
 %>
-<div id="edit<%=nv.getIdluongnv()%>" style="margin-top: -65px;" class="modal fade" role="dialog"><!--Modal nhan vien-->
+<div id="editluong<%=nv.getIdluongnv()%>" style="margin-top: -65px;" class="modal fade" role="dialog"><!--Modal nhan vien-->
     <div class="modal-dialog">
 
         <div class="modal-content">

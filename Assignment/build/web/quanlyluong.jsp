@@ -110,7 +110,7 @@
                                     </tbody>
                                 </table>
                             </form>
-                           
+                                        <%@include file="editluong.jsp" %>
 
                             <%
                                 if (pageCount != 1) {

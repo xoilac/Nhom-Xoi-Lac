@@ -5,9 +5,8 @@
  */
 package com.javaweb.controller;
 
-import com.javaweb.model.Luongnv;
-import com.javaweb.services.LuongServices;
-import com.javaweb.services.NhanVienServices;
+import com.javaweb.model.Chucvu;
+import com.javaweb.services.ChucVuServices;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class EditluongServlet extends HttpServlet {
+public class AddChucVuServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,24 +33,23 @@ public class EditluongServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         request.setCharacterEncoding("UTF-8");
+        Chucvu cv= null;
         try {
-            int idluongnv=Integer.parseInt(request.getParameter("idluongnv"));
-            int chucvu = Integer.parseInt(request.getParameter("chucvu"));
+            
+            String tenchucvu = request.getParameter("tenchucvu");
 
-            double luongcoban = Double.parseDouble(request.getParameter("luongcoban"));
+            String mota = request.getParameter("mota");
             HttpSession session = request.getSession();
             
-            LuongServices ad = new LuongServices();
-            Luongnv luong = ad.getLuongByID(idluongnv);
-            luong.setChucvu(chucvu);
-            luong.setLuongcoban(luongcoban);
-            luong.setDonvi("1");
-            luong.setGhichu("");
-            boolean rs = ad.InsertLuong(luong);
+            ChucVuServices ad = new ChucVuServices();
+            cv = new Chucvu(tenchucvu,mota);
+
+            boolean rs = ad.InsertChucvu(cv);
             if (rs) {
                 Thread.sleep(5000);
-                response.sendRedirect("quanlyluong.jsp");
+                response.sendRedirect("chucvu.jsp");
             }
         } catch (Exception fue) {
             System.out.println(fue.toString());
@@ -61,10 +59,10 @@ public class EditluongServlet extends HttpServlet {
 //            out.println("<!DOCTYPE html>");
 //            out.println("<html>");
 //            out.println("<head>");
-//            out.println("<title>Servlet EditluongServlet</title>");            
+//            out.println("<title>Servlet AddChucVuServlet</title>");            
 //            out.println("</head>");
 //            out.println("<body>");
-//            out.println("<h1>Servlet EditluongServlet at " + request.getContextPath() + "</h1>");
+//            out.println("<h1>Servlet AddChucVuServlet at " + request.getContextPath() + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        }

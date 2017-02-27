@@ -28,19 +28,19 @@
                 <h4 style=" color: #05B2D2;   text-align: center;" class="modal-title"><i class="glyphicon glyphicon-user"></i> Sửa nhân viên</h4>
             </div>
 
-            <form class="form-horizontal" name="fUser"  action="EditluongServlet" method="post" id="fEditEmp" enctype="multipart/form-data">
+            <form class="form-horizontal" name="fUser"  action="EditluongServlet" method="post" id="fEditEmp">
                 <input style="display: none;" name="idluongnv" value="<%=nv.getIdluongnv()%>" />
                 <div class="form-group">
-                    <label class="control-label col-sm-2 col-md-3" for="chucvu">Họ tên <em>*</em> </label>
+                    <label class="control-label col-sm-2 col-md-3" for="chucvu">Chức vụ <em>*</em> </label>
                     <div class="col-md-7">
                         <input type="text" name="chucvu"value="<%=nv.getChucvu()%>"class="form-control" id="fullname" placeholder="Họ và tên">
                         <span id="errUserName"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-3" for="luongcoban">Ngày sinh <em>*</em></label>
+                    <label class="control-label col-md-3" for="luongcoban">Lương cơ bản <em>*</em></label>
                     <div class="col-md-7">
-                        <input type="date" name="luongcoban" value="<%=nv.getLuongcoban()%>" class="form-control"  id="birthday">
+                        <input type="text" name="luongcoban" value="<%=nv.getLuongcoban()%>" class="form-control"  id="birthday">
                     </div>
                 </div>
                 

@@ -28,6 +28,10 @@
         <servlet-name>EditchucvuServlet</servlet-name>
         <servlet-class>com.javaweb.controller.EditchucvuServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddChucVuServlet</servlet-name>
+        <servlet-class>com.javaweb.controller.AddChucVuServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -62,6 +66,10 @@
     <servlet-mapping>
         <servlet-name>EditchucvuServlet</servlet-name>
         <url-pattern>/EditchucvuServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddChucVuServlet</servlet-name>
+        <url-pattern>/AddChucVuServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

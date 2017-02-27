@@ -37,9 +37,13 @@
 
                             </div>
 
+                            <a href="#addchucvu" style="float: right; margin-right: 20px;    margin-bottom: -24px;
+                               margin-top: 10px;"  class="btn btn btn-info btn-lg"data-toggle="modal" type="submit" value="" >
+                                <img src="images/profile-add-icon.png" alt=""/> Thêm Chức vụ
+                            </a>
                             <form action="" method="post">
 
-                                
+
                                 <!-- Table -->
                                 <script type="text/javascript">
                                     function check(source) {
@@ -54,7 +58,7 @@
                                     int pageNumber = 1;
                                     String url = "chucvu.jsp";
                                     ChucVuServices ps = new ChucVuServices();
-                                    ArrayList<Chucvu> listchucvu = null;
+                                    ArrayList<Chucvu> listchucvus = null;
 
                                     if (request.getParameter("pagenumber") != null) {
                                         session.setAttribute("pagenumber", request.getParameter("pagenumber"));
@@ -63,7 +67,7 @@
                                         session.setAttribute("pagenumber", "1");
                                     }
 
-                                    listchucvu = ps.getAllchucvuoder(pageSize, pageNumber);
+                                    listchucvus = ps.getAllchucvuoder(pageSize, pageNumber);
 
                                     int pageCount = (ps.lcount) / pageSize + (ps.lcount % pageSize > 0 ? 1 : 0);
 
@@ -75,33 +79,32 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            
+
                                             <th>TT</th>                        
                                             <th>Tên chức vụ</th>                        
                                             <th>Mô tả</th> 
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%                                            
-                                            for (int i = 0; i < listchucvu.size(); i++) {
-                                                Chucvu chucvu = listchucvu.get(i);
+                                        <%                                            for (int i = 0; i < listchucvus.size(); i++) {
+                                                Chucvu chucvu = listchucvus.get(i);
                                                 int dem = i + 1;
                                                 if (pageNumber > 1) {
                                                     dem = i + pageSize * (pageNumber - 1) + 1;
                                                 }
                                         %>
                                         <tr>
-                                            
+
                                             <th><%=dem%></th>
                                             <th><%=chucvu.getTenchucvu()%></th>
-                                              <th><%=chucvu.getMota()%></th>
+                                            <th><%=chucvu.getMota()%></th>
                                             <td>
-                                                <a  href="#editchuvu<%=chucvu.getIdchucvu()%>" data-toggle="modal">
+                                                <a  href="#editchucvu<%=chucvu.getIdchucvu()%>" data-toggle="modal">
                                                     <img src="images/edit-file-icon.png" alt=""/>
                                                 </a>
                                             </td>
-                                            
+
                                         </tr>
                                         <%
                                             }
@@ -109,10 +112,9 @@
                                     </tbody>
                                 </table>
                             </form>
-                           
-
-                            <%
-                                if (pageCount != 1) {
+                            <%@include file="editchucvu.jsp" %>
+                            <%@include file="addchucvu.jsp" %>
+                            <%                                if (pageCount != 1) {
                             %>
                             <div class="panel-footer">
                                 <nav aria-label="Page navigation">

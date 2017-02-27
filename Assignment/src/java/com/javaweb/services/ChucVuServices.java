@@ -49,7 +49,7 @@ public class ChucVuServices {
             tx = session.getTransaction();
             tx.begin();
 
-            Query query = session.createQuery("from Chucvu order by idchucvu desc");
+            Query query = session.createQuery("from Chucvu");
             lcount = query.list().size();
             query = query.setFirstResult(pageSize * (pageNumber - 1));
             query.setMaxResults(pageSize);

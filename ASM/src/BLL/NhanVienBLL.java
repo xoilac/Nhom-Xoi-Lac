@@ -2,12 +2,12 @@ package BLL;
 
 import static BLL.ThongBao_ChuyenDoi.*;
 import DAL.NhanVienDAL;
+import DTO.ChucVuDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import DTO.NhanVien;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import static DAL.QuyenNhanVienDAL.LayTenQuyen;
 import java.text.SimpleDateFormat;
 
 /**
@@ -22,120 +22,92 @@ public class NhanVienBLL {
      */
     public static boolean KiemTraThongTin(NhanVien nv) {
         boolean ketQua = true, kTDT = true, kTCMND = true, kTLuong = true;
-        if (nv.getHoTen().trim().equals("")) 
-        {
+        if (nv.getHoTen().trim().equals("")) {
             ThongBao("Vui lòng nhập tên nhân viên !", "Thông báo", 1);
             return false;
 //        } 
 //        else if (!KiemTraChu(nv.getHoTen())) {
 //            ThongBao("Tên chỉ chứa chữ !", "Thông báo", 1);
 //            return false;
-        } else if (nv.getNgaySinh().trim().equals("")) 
-        {
+        } else if (nv.getNgaySinh().trim().equals("")) {
             ThongBao("Vui lòng chọn ngày sinh !", "Thông báo", 1);
             return false;
-        } else if (nv.getDiaChi().trim().equals("")) 
-        {
+        } else if (nv.getDiaChi().trim().equals("")) {
             ThongBao("Vui lòng nhập địa chỉ !", "Thông báo", 1);
             return false;
-        } else if (nv.getSdt().trim().equals("")) 
-        {
+        } else if (nv.getSdt().trim().equals("")) {
             ThongBao("Vui lòng nhập số điện thoại !", "Thông báo", 1);
             return false;
-        } else if (nv.getSdt().length() > 11 || nv.getSdt().length() < 10) 
-        {
+        } else if (nv.getSdt().length() > 11 || nv.getSdt().length() < 10) {
             ThongBao("Số điện thoại chỉ từ 10 - 11 kí tự số !", "Thông báo", 1);
             return false;
-        } else if (nv.getSdt().length() < 12) 
-        {
+        } else if (nv.getSdt().length() < 12) {
             String tbSDT = "";
-            for (int i = 0; i < nv.getSdt().length(); i++) 
-            {
-                if (!KiemTraSo(nv.getSdt().charAt(i) + "")) 
-                {
+            for (int i = 0; i < nv.getSdt().length(); i++) {
+                if (!KiemTraSo(nv.getSdt().charAt(i) + "")) {
                     tbSDT = "Số điện thoại phải là số !";
                     ketQua = false;
                     kTDT = false;
                 }
             }
-            if (!tbSDT.equals("")) 
-            {
+            if (!tbSDT.equals("")) {
                 ThongBao(tbSDT, "Thông báo", 1);
             }
         }
-        if (kTDT) 
-        {
-            if (nv.getNgayVaoLam().trim().equals("")) 
-            {
+        if (kTDT) {
+            if (nv.getNgayVaoLam().trim().equals("")) {
                 ThongBao("Vui lòng chọn ngày vào làm !", "Thông báo", 1);
                 return false;
-            } else if (nv.getEmail().trim().equals("")) 
-            {
+            } else if (nv.getEmail().trim().equals("")) {
                 ThongBao("Vui lòng nhập email !", "Thông báo", 1);
                 return false;
-            } else if (!CheckEmail(nv.getEmail())) 
-            {
+            } else if (!CheckEmail(nv.getEmail())) {
                 ThongBao("Email không hợp lệ. Ex: abc@xyz.kj !", "Thông báo", 1);
                 return false;
-            } else if (nv.getCmnd().trim().equals("")) 
-            {
+            } else if (nv.getCmnd().trim().equals("")) {
                 ThongBao("Vui lòng nhập chứng minh nhân dân !", "Thông báo", 1);
                 return false;
-            } else if (nv.getCmnd().length() != 9) 
-            {
+            } else if (nv.getCmnd().length() != 9) {
                 ThongBao("CMND chỉ có 9 kí tự số !", "Thông báo", 1);
                 return false;
-            } else if (nv.getCmnd().length() == 9) 
-            {
+            } else if (nv.getCmnd().length() == 9) {
                 String tbCMND = "";
-                for (int i = 0; i < nv.getCmnd().length(); i++) 
-                {
-                    if (!KiemTraSo(nv.getCmnd().charAt(i) + "")) 
-                    {
-                        tbCMND= "CMND phải là kí tự số !";
+                for (int i = 0; i < nv.getCmnd().length(); i++) {
+                    if (!KiemTraSo(nv.getCmnd().charAt(i) + "")) {
+                        tbCMND = "CMND phải là kí tự số !";
                         ketQua = false;
                         kTCMND = false;
                     }
                 }
-                if(!tbCMND.equals(""))
-                {
+                if (!tbCMND.equals("")) {
                     ThongBao(tbCMND, "Thông báo", 1);
                 }
             }
         }
-        if (kTCMND && kTDT) 
-        {
-            if (nv.getNgayCap().trim().equals("")) 
-            {
+        if (kTCMND && kTDT) {
+            if (nv.getNgayCap().trim().equals("")) {
                 ThongBao("Vui lòng chọn ngày cấp cmnd !", "Thông báo", 1);
                 return false;
-            } else if (nv.getNoicap().trim().equals("")) 
-            {
+            } else if (nv.getNoicap().trim().equals("")) {
                 ThongBao("Vui lòng nhập nơi cấp cmnd !", "Thông báo", 1);
                 return false;
-            } else if (nv.getLuongNV().trim().equals("")) 
-            {
+            } else if (nv.getLuongNV().trim().equals("")) {
                 ThongBao("Vui lòng nhập lương nhân viên !", "Thông báo", 1);
                 return false;
-            } else if (!nv.getLuongNV().trim().equals("")) 
-            {
+            } else if (!nv.getLuongNV().trim().equals("")) {
                 String tbLuong = "";
-                for (int i = 0; i < nv.getLuongNV().length(); i++) 
-                {
-                    if (!KiemTraSo(nv.getLuongNV().charAt(i) + "")) 
-                    {
+                for (int i = 0; i < nv.getLuongNV().length(); i++) {
+                    if (!KiemTraSo(nv.getLuongNV().charAt(i) + "")) {
                         tbLuong = "Lương phải là kí tự số !";
                         ketQua = false;
                     }
                 }
-                if(!tbLuong.equals(""))
-                {
+                if (!tbLuong.equals("")) {
                     ThongBao(tbLuong, "Thông báo", 1);
                 }
             }
         }
-        if (ketQua) 
-        {
+        if (ketQua) {
             ThongBao("Thành công !", "Thông báo", 1);
         }
 
@@ -375,5 +347,40 @@ public class NhanVienBLL {
     public static ResultSet LayQuyen() {
         ResultSet rs = NhanVienDAL.LayDuLieuQuyen();
         return rs;
+    }
+
+    public static void SuaChucVu(ChucVuDTO cv) {
+        NhanVienDAL.SuaChucVu(cv);
+        ThongBao("Thành công !", "Thông báo", 1);
+
+    }
+
+    public static void ThemChucVu(ChucVuDTO cv) {
+        NhanVienDAL.ThemChucVu(cv);
+        ThongBao("Thành công !", "Thông báo", 1);
+    }
+
+    public static ResultSet LayTatCaDuLieuChucVu() {
+        ResultSet rs;
+        rs = NhanVienDAL.LayDuLieuChucVu();
+        return rs;
+    }
+
+    public static void DoDuLieuChucVu(ResultSet rs, JTable table) {
+        Object[] objs = new Object[]{"Id Chức Vụ", "Tên Chức Vụ", "Mô Tả",};
+        DefaultTableModel tableModel = new DefaultTableModel(objs, 0);
+        table.setModel(tableModel);
+
+        try {
+            while (rs.next()) {
+                Object[] item = new Object[3];
+                item[0] = table.getRowCount() + 1;
+                item[1] = rs.getString("tenchucvu");
+                item[2] = rs.getString("mota");
+                tableModel.addRow(item);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
     }
 }

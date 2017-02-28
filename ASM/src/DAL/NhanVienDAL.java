@@ -1,10 +1,9 @@
 package DAL;
 
+import DTO.ChucVuDTO;
 import DTO.NhanVien;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,11 +21,11 @@ public class NhanVienDAL {
     public static void ThemNhanVien(NhanVien nv) {
         String cauTruyVan = "insert into nhanvien(hoten, ngaysinh, sdt, diachi, "
                 + "chucvu, gioitinh, ngayvaolam, cmnd, ngaycap, tendn, matkhau, "
-                + "email, luongnv, hinhanh, ghichu)\n" +
-"values ('"+nv.getHoTen()+"', STR_TO_DATE('"+nv.getNgaySinh()+"','%d/%m/%Y'), '"+nv.getSdt()+"', '"+nv.getDiaChi()+"',"
-                + " '"+nv.getChucVu()+"', b'"+nv.isGioiTinh()+"', STR_TO_DATE('"+nv.getNgayVaoLam()+"','%d/%m/%Y'),"
-                + " '"+nv.getCmnd()+"', STR_TO_DATE('"+nv.getNgayCap()+"','%d/%m/%Y'), '', '', '"+nv.getEmail()+"',"
-                + " '"+nv.getLuongNV()+"', '"+nv.getHinhAnh()+"', '"+nv.getGhiChu()+"');";
+                + "email, luongnv, hinhanh, ghichu)\n"
+                + "values ('" + nv.getHoTen() + "', STR_TO_DATE('" + nv.getNgaySinh() + "','%d/%m/%Y'), '" + nv.getSdt() + "', '" + nv.getDiaChi() + "',"
+                + " '" + nv.getChucVu() + "', b'" + nv.isGioiTinh() + "', STR_TO_DATE('" + nv.getNgayVaoLam() + "','%d/%m/%Y'),"
+                + " '" + nv.getCmnd() + "', STR_TO_DATE('" + nv.getNgayCap() + "','%d/%m/%Y'), '', '', '" + nv.getEmail() + "',"
+                + " '" + nv.getLuongNV() + "', '" + nv.getHinhAnh() + "', '" + nv.getGhiChu() + "');";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }
@@ -36,16 +35,15 @@ public class NhanVienDAL {
     Tham số truyền vào là đối tượng nhân viên - @NhanVienDTO
      */
     public static void SuaNhanVien(NhanVien nv) {
-        String cauTruyVan = "Update nhanvien set hoten = '"+nv.getHoTen()+"', ngaysinh = STR_TO_DATE('"+nv.getNgaySinh()+"','%d/%m/%Y'),"
-                + " sdt = '"+nv.getSdt()+"', diachi = N'"+nv.getDiaChi()+"', chucvu = '"+nv.getChucVu()+"', gioitinh = b'"+nv.isGioiTinh()+"',"
-                + " ngayvaolam = STR_TO_DATE('"+nv.getNgayVaoLam()+"','%d/%m/%Y'),cmnd = '"+nv.getCmnd()+"',"
-                + " ngaycap = STR_TO_DATE('"+nv.getNgayCap()+"','%d/%m/%Y'),  email = '"+nv.getEmail()+"', luongnv = '"+nv.getLuongNV()+"',"
-                + " hinhanh = '"+nv.getHinhAnh()+"', ghichu = '"+nv.getGhiChu()+"',"
-                + "noicap='"+nv.getNoicap()+"'  where idnhanvien = "+nv.getIdNhanVien()+"";
+        String cauTruyVan = "Update nhanvien set hoten = '" + nv.getHoTen() + "', ngaysinh = STR_TO_DATE('" + nv.getNgaySinh() + "','%d/%m/%Y'),"
+                + " sdt = '" + nv.getSdt() + "', diachi = N'" + nv.getDiaChi() + "', chucvu = '" + nv.getChucVu() + "', gioitinh = b'" + nv.isGioiTinh() + "',"
+                + " ngayvaolam = STR_TO_DATE('" + nv.getNgayVaoLam() + "','%d/%m/%Y'),cmnd = '" + nv.getCmnd() + "',"
+                + " ngaycap = STR_TO_DATE('" + nv.getNgayCap() + "','%d/%m/%Y'),  email = '" + nv.getEmail() + "', luongnv = '" + nv.getLuongNV() + "',"
+                + " hinhanh = '" + nv.getHinhAnh() + "', ghichu = '" + nv.getGhiChu() + "',"
+                + "noicap='" + nv.getNoicap() + "'  where idnhanvien = " + nv.getIdNhanVien() + "";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }
-
 
     /*
     Hàm truy vấn xóa nhân viên trong DB
@@ -129,7 +127,7 @@ public class NhanVienDAL {
         NhanVien nv = new NhanVien();
         try {
             while (rs.next()) {
-               nv.setIdNhanVien(rs.getInt("idNhanVien"));
+                nv.setIdNhanVien(rs.getInt("idNhanVien"));
                 nv.setHoTen(rs.getString("hoTen"));
                 nv.setTenDN(rs.getString("tenDN"));
                 nv.setMatKhau(rs.getString("matKhau"));
@@ -139,7 +137,7 @@ public class NhanVienDAL {
                 nv.setNgayVaoLam(rs.getString("ngayVaoLam"));
                 nv.setChucVu(rs.getInt("chucVu"));
                 nv.setHinhAnh(rs.getString("HinhAnh"));
-                nv.setGioiTinh(rs.getBoolean("gioiTinh"));
+                nv.setGioiTinh(rs.getInt("gioiTinh"));
                 nv.setGhiChu(rs.getString("ghiChu"));
             }
         } catch (SQLException ex) {
@@ -162,7 +160,7 @@ public class NhanVienDAL {
         try {
             if (rs.next()) {
                 maNguoiTao = rs.getInt("idNhanVien");
-             //   iQuyenND = rs.getInt("Quyen");//
+                //   iQuyenND = rs.getInt("Quyen");//
                 return true;
             }
         } catch (SQLException ex) {
@@ -195,22 +193,45 @@ public class NhanVienDAL {
                 + "where IDNhanVien = " + maND + "";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
     }
-    public static ResultSet LayThongTinNhanVien(){
+
+    public static ResultSet LayThongTinNhanVien() {
         ResultSet rs;
-        String CTV="select * from nhanvien";
-        rs=ConnectionDB.ExecuteQueryGetTable(CTV);
+        String CTV = "select * from nhanvien";
+        rs = ConnectionDB.ExecuteQueryGetTable(CTV);
         return rs;
     }
-    public static ResultSet LayTenQuyen(int maquyen){
-       
-        String cauTruyVan="select tenchucvu from chucvu where idchucvu = "+maquyen;
-        ResultSet rs=ConnectionDB.ExecuteQueryGetTable(cauTruyVan);
+
+    public static ResultSet LayTenQuyen(int maquyen) {
+
+        String cauTruyVan = "select tenchucvu from chucvu where idchucvu = " + maquyen;
+        ResultSet rs = ConnectionDB.ExecuteQueryGetTable(cauTruyVan);
         return rs;
     }
-    public static ResultSet LayDuLieuQuyen(){ 
-        String CTV="select * from chucvu";
-        ResultSet rs=ConnectionDB.ExecuteQueryGetTable(CTV);
+
+    public static ResultSet LayDuLieuQuyen() {
+        String CTV = "select * from chucvu";
+        ResultSet rs = ConnectionDB.ExecuteQueryGetTable(CTV);
         return rs;
-        
+
     }
+
+    public static void SuaChucVu(ChucVuDTO cv) {
+        String cauTruyVan = "Update chucvu set tenchucvu  = = '" + cv.getTenChucVu()+ "' , mota = '" + cv.getGhiChu()+  "' where idchucvu = "+cv.getIdChucVu();
+        ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
+        System.out.println(cauTruyVan);
+    }
+    
+    public static void ThemChucVu(ChucVuDTO cv) {
+        String cauTruyVan = "insert into chucvu(tenchucvu, mota) "
+                 + "values ('" + cv.getTenChucVu()+ "', '" + cv.getGhiChu() + "');";
+        ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
+        System.out.println(cauTruyVan);
+    }
+  
+    public static ResultSet LayDuLieuChucVu() {
+        String CTV = "select * from chucvu";
+        ResultSet rs = ConnectionDB.ExecuteQueryGetTable(CTV);
+        return rs;
+    }
+
 }

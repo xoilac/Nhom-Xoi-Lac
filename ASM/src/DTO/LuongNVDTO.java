@@ -7,19 +7,27 @@ package DTO;
 public class LuongNVDTO {
     private int idLuongNV;
     private int chucVu;
-    private double luongCoBan;
+    private String luongCoBan;
     private String ghiChu;
 
+    private String donvi;
     public LuongNVDTO() {
     }
 
-    public LuongNVDTO(int idLuongNV, int chucVu, double luongCoBan, String ghiChu) {
+    public LuongNVDTO(int idLuongNV, int chucVu, String luongCoBan,String donvi, String ghiChu) {
         this.idLuongNV = idLuongNV;
         this.chucVu = chucVu;
         this.luongCoBan = luongCoBan;
         this.ghiChu = ghiChu;
     }
+    
+    public String getDonvi() {
+        return donvi;
+    }
 
+    public void setDonvi(String donvi) {
+        this.donvi = donvi;
+    }
     /**
      * @return the idLuongNV
      */
@@ -51,14 +59,14 @@ public class LuongNVDTO {
     /**
      * @return the luongCoBan
      */
-    public double getLuongCoBan() {
+    public String getLuongCoBan() {
         return luongCoBan;
     }
 
     /**
      * @param luongCoBan the luongCoBan to set
      */
-    public void setLuongCoBan(double luongCoBan) {
+    public void setLuongCoBan(String luongCoBan) {
         this.luongCoBan = luongCoBan;
     }
 

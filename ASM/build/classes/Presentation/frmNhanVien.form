@@ -804,9 +804,6 @@
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="240x128 pixel"/>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="240x128 pixel"/>
-                  </AccessibilityProperties>
                 </Component>
               </SubComponents>
             </Container>

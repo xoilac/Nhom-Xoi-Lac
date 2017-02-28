@@ -869,45 +869,45 @@ public class frmNhanVien extends javax.swing.JFrame {
         Mục đích: lưu vị trí dòng đầu tiên được chọn trong table
          */
 
-        int index = tblNhanVien.getSelectedRow();
-
-        //Gán các textfield trong form là các giá trị của dòng được chọn với vị trí index
-        txtMaNhanVien.setText(tblNhanVien.getValueAt(index, 1).toString());
-        txtTenNhanVien.setText(tblNhanVien.getValueAt(index, 2).toString());
-
-        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 14).toString());
-        txtDiaChi.setText(tblNhanVien.getValueAt(index, 5).toString());
-        txtSDT.setText(tblNhanVien.getValueAt(index, 4).toString());
-        txtEmail.setText(tblNhanVien.getValueAt(index, 11).toString());
-        txtCMND.setText(tblNhanVien.getValueAt(index, 9).toString());
-        txtnoicap.setText(tblNhanVien.getValueAt(index, 13).toString());
-        txtLuong.setText(tblNhanVien.getValueAt(index, 12).toString());
-        DoiDateChooser(dateNgayCap).setText(tblNhanVien.getValueAt(index, 10).toString());
-        //Gọi hàm đổi sang ô text
-        DoiDateChooser(dateNgayVaolam).setText(tblNhanVien.getValueAt(index, 8).toString());
-        DoiDateChooser(dateNgaySinh).setText(tblNhanVien.getValueAt(index, 3).toString());
-        //Gọi hàm chọn radio button phù hợp
-        String gioiTinh = tblNhanVien.getValueAt(index, 7).toString();
-        chonRadio(gioiTinh, radNam, radNu);
-
-        //Tạo biến và gọi hàm chuyển đổi combobox
-        String chucvu = tblNhanVien.getValueAt(index, 6).toString();
-        ComboBoxBLL.setSelectedCombobox(cbbchucvu, chucvu);
-
-        String idnhanvien = tblNhanVien.getValueAt(index, 1).toString();
-        String fileAnh = NhanVienBLL.LayAnh(idnhanvien);
-        /*
-        Thực hiện đọc ảnh của từng nhân viên
-         */
-        File anh = new File("image\\Nhan_vien\\" + fileAnh);
-        try {
-            image = DocFileAnh(anh);
-            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
-        } catch (NullPointerException e) {
-            anh = new File(macDinh);
-            image = DocFileAnh(anh);
-            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
-        }
+//        int index = tblNhanVien.getSelectedRow();
+//
+//        //Gán các textfield trong form là các giá trị của dòng được chọn với vị trí index
+//        txtMaNhanVien.setText(tblNhanVien.getValueAt(index, 1).toString());
+//        txtTenNhanVien.setText(tblNhanVien.getValueAt(index, 2).toString());
+//
+//        txtaGhiChu.setText(tblNhanVien.getValueAt(index, 14).toString());
+//        txtDiaChi.setText(tblNhanVien.getValueAt(index, 5).toString());
+//        txtSDT.setText(tblNhanVien.getValueAt(index, 4).toString());
+//        txtEmail.setText(tblNhanVien.getValueAt(index, 11).toString());
+//        txtCMND.setText(tblNhanVien.getValueAt(index, 9).toString());
+//        txtnoicap.setText(tblNhanVien.getValueAt(index, 13).toString());
+//        txtLuong.setText(tblNhanVien.getValueAt(index, 12).toString());
+//        DoiDateChooser(dateNgayCap).setText(tblNhanVien.getValueAt(index, 10).toString());
+//        //Gọi hàm đổi sang ô text
+//        DoiDateChooser(dateNgayVaolam).setText(tblNhanVien.getValueAt(index, 8).toString());
+//        DoiDateChooser(dateNgaySinh).setText(tblNhanVien.getValueAt(index, 3).toString());
+//        //Gọi hàm chọn radio button phù hợp
+//        String gioiTinh = tblNhanVien.getValueAt(index, 7).toString();
+//        chonRadio(gioiTinh, radNam, radNu);
+//
+//        //Tạo biến và gọi hàm chuyển đổi combobox
+//        String chucvu = tblNhanVien.getValueAt(index, 6).toString();
+//        ComboBoxBLL.setSelectedCombobox(cbbchucvu, chucvu);
+//
+//        String idnhanvien = tblNhanVien.getValueAt(index, 1).toString();
+//        String fileAnh = NhanVienBLL.LayAnh(idnhanvien);
+//        /*
+//        Thực hiện đọc ảnh của từng nhân viên
+//         */
+//        File anh = new File("image\\Nhan_vien\\" + fileAnh);
+//        try {
+//            image = DocFileAnh(anh);
+//            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+//        } catch (NullPointerException e) {
+//            anh = new File(macDinh);
+//            image = DocFileAnh(anh);
+//            lblPicture.setIcon(new ImageIcon(image.getScaledInstance(width, height, BufferedImage.TYPE_INT_ARGB)));
+//        }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed

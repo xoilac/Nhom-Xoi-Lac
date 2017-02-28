@@ -15,7 +15,7 @@ public class ConnectionDB {
     String hostName = "localhost",
             dbName = "ql_nhanvien",
             userName = "root",
-            password ="123456";
+            password ="1234";
 
     String url = "jdbc:mysql://"+hostName+":3306/"+dbName+"?useSSL=false";
     static Connection conn;

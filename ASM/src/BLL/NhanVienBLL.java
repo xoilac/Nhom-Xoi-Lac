@@ -2,6 +2,7 @@ package BLL;
 
 import static BLL.ThongBao_ChuyenDoi.*;
 import DAL.NhanVienDAL;
+import DTO.CaLamViecDTO;
 import DTO.ChucVuDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -184,6 +185,12 @@ public class NhanVienBLL {
 
         return rs;
     }
+      public static ResultSet LayThongTinChucVu() {
+        ResultSet rs;
+        rs = NhanVienDAL.LayDuLieuChucVu();
+
+        return rs;
+    }
 
     /*
     Hàm đổ dữ liệu vào bảng
@@ -360,9 +367,30 @@ public class NhanVienBLL {
         ThongBao("Thành công !", "Thông báo", 1);
     }
 
+    public static void ThemCaLamViec(CaLamViecDTO clv) {
+        NhanVienDAL.ThemCaLamViec(clv);
+        ThongBao("Thành công !", "Thông báo", 1);
+    }
+
+    public static void SuaCaLamViec(CaLamViecDTO clv) {
+        NhanVienDAL.SuaCaLamViec(clv);
+        ThongBao("Thành công !", "Thông báo", 1);
+    }
+
+    public static void XoaCaLamViec(String id) {
+        NhanVienDAL.XoaCaLamViec(id);
+        ThongBao("Thành công !", "Thông báo", 1);
+    }
+
     public static ResultSet LayTatCaDuLieuChucVu() {
         ResultSet rs;
         rs = NhanVienDAL.LayDuLieuChucVu();
+        return rs;
+    }
+    
+    public static ResultSet LayTatCaDuLieuCaLamViec() {
+        ResultSet rs;
+        rs = NhanVienDAL.LayDuLieuCaLamViec();
         return rs;
     }
 
@@ -378,6 +406,28 @@ public class NhanVienBLL {
                 item[1] = rs.getInt("idchucvu");
                 item[2] = rs.getString("tenchucvu");
                 item[3] = rs.getString("mota");
+                tableModel.addRow(item);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+    }
+
+    public static void DoDuLieuCaLamViec(ResultSet rs, JTable table) {
+        Object[] objs = new Object[]{"STT","ID Ca Làm Việc", "Mã Ca", "Tên Ca", "Giờ Bắt Đầu", "Giờ Kết Thúc", "Ghi Chú"};
+        DefaultTableModel tableModel = new DefaultTableModel(objs, 0);
+        table.setModel(tableModel);
+
+        try {
+            while (rs.next()) {
+                Object[] item = new Object[7];
+                item[0] = table.getRowCount() + 1;
+                item[1] = rs.getInt("idcalamviec");
+                item[2] = rs.getString("maca");
+                item[3] = rs.getString("tenca");
+                item[4] = rs.getString("giobatdau");
+                item[5] = rs.getString("gioketthuc");
+                item[6] = rs.getString("ghichu");
                 tableModel.addRow(item);
             }
         } catch (SQLException ex) {

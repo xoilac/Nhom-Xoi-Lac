@@ -1,5 +1,6 @@
 package DAL;
 
+import DTO.CaLamViecDTO;
 import DTO.ChucVuDTO;
 import DTO.NhanVien;
 import java.sql.ResultSet;
@@ -216,20 +217,46 @@ public class NhanVienDAL {
     }
 
     public static void SuaChucVu(ChucVuDTO cv) {
-        String cauTruyVan = "Update chucvu set tenchucvu  = = '" + cv.getTenChucVu()+ "' , mota = '" + cv.getGhiChu()+  "' where idchucvu = "+cv.getIdChucVu();
+        String cauTruyVan = "Update chucvu set tenchucvu  = = '" + cv.getTenChucVu() + "' , mota = '" + cv.getGhiChu() + "' where idchucvu = " + cv.getIdChucVu();
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }
-    
+
     public static void ThemChucVu(ChucVuDTO cv) {
         String cauTruyVan = "insert into chucvu(tenchucvu, mota) "
-                 + "values ('" + cv.getTenChucVu()+ "', '" + cv.getGhiChu() + "');";
+                + "values ('" + cv.getTenChucVu() + "', '" + cv.getGhiChu() + "');";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }
-  
+
     public static ResultSet LayDuLieuChucVu() {
         String CTV = "select * from chucvu";
+        ResultSet rs = ConnectionDB.ExecuteQueryGetTable(CTV);
+        return rs;
+    }
+     public static ResultSet LayTatCaDuLieuCaLamViec() {
+        String CTV = "select * from calamviec";
+        ResultSet rs = ConnectionDB.ExecuteQueryGetTable(CTV);
+        return rs;
+    }
+
+    public static void ThemCaLamViec(CaLamViecDTO clv) {
+        String cauTruyVan = "insert into CaLamViec(maca, tenca, giobatdau, gioketthuc, ghichu) "
+                + "values ('" + clv.getMaCa() + "', '" + clv.getTenCa() + "','" + clv.getGioBatDau() + "','" + clv.getGioKetThuc() + "','" + clv.getGhiChu() + "')";
+        ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
+        System.out.println(cauTruyVan);
+    }
+    public static void SuaCaLamViec(CaLamViecDTO clv) {
+        String cauTruyVan = "Update CaLamViec set maca  = = '" + clv.getMaCa()+ "' , tenca = '" + clv.getTenCa()+ "',giobatdau = '" + clv.getGioBatDau()+ "',gioketthuc = '" + clv.getGioKetThuc()+ "',ghichu = '" + clv.getGhiChu() + "' where idcalamviec = " + clv.getIdCaLamViec();
+        ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
+        System.out.println(cauTruyVan);
+    }
+     public static void XoaCaLamViec(String idCaLamViec) {
+        String cauTruyVan = " delete from CaLamViec where idCaLamViec = " + idCaLamViec;
+        ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
+    }
+     public static ResultSet LayDuLieuCaLamViec() {
+        String CTV = "select * from calamviec";
         ResultSet rs = ConnectionDB.ExecuteQueryGetTable(CTV);
         return rs;
     }

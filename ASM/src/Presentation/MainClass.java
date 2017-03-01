@@ -20,11 +20,9 @@ public class MainClass {
      */
     public static void main(String[] args) {
 
-<<<<<<< HEAD
-        frmChucVu dn = new frmChucVu();
-=======
-        frmLuong dn = new frmLuong();
->>>>>>> f0aa9878e4606a7f522c402efbb8d351e5e4ec97
+
+        frmCaLamViec dn = new frmCaLamViec();
+
         dn.show();               
 
     }

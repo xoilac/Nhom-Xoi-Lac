@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/Presentation/frmNhanVien.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/DTO/LuongNVDTO.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/Presentation/frmLuong.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/BLL/NhanVienBLL.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/DAL/LuongDAL.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/BLL/LuongBLL.java</file>
+            <file>file:/D:/GiThub/Nhom-Xoi-Lac/ASM/src/DAL/NhanVienDAL.java</file>
+        </group>
+>>>>>>> f0aa9878e4606a7f522c402efbb8d351e5e4ec97
     </open-files>
 </project-private>

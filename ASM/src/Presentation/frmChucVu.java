@@ -195,7 +195,7 @@ public class frmChucVu extends javax.swing.JFrame {
         
        NhanVienBLL.SuaChucVu(cv);
          ResultSet rs = NhanVienBLL.LayThongTinNhanVien();
-        NhanVienBLL.DoDuLieuNhanVien(rs, tblChucvu);
+        NhanVienBLL.DoDuLieuChucVu(rs, tblChucvu);
         
     }//GEN-LAST:event_btnSuaActionPerformed
 

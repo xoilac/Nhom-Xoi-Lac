@@ -373,10 +373,11 @@ public class NhanVienBLL {
 
         try {
             while (rs.next()) {
-                Object[] item = new Object[3];
+                Object[] item = new Object[4];
                 item[0] = table.getRowCount() + 1;
-                item[1] = rs.getString("tenchucvu");
-                item[2] = rs.getString("mota");
+                item[1] = rs.getInt("idchucvu");
+                item[2] = rs.getString("tenchucvu");
+                item[3] = rs.getString("mota");
                 tableModel.addRow(item);
             }
         } catch (SQLException ex) {

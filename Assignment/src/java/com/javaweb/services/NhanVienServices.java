@@ -9,10 +9,25 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
- *
+ *s
  * @author admin
  */
 public class NhanVienServices {
+     //Hàm kiểm tra đăng nhập
+    public boolean CheckLogin(String giaTri, String password) {
+        Nhanvien nhanvien = GetNhanvienByEmailOrtendn(giaTri);
+        if (nhanvien != null) {
+            if (nhanvien.getMatkhau().equals(password)) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else {
+
+            return false;
+        }
+    }
     //Hàm thêm dữ liệu
     public boolean ThemNhanVien(Nhanvien nv) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -103,6 +118,29 @@ public class NhanVienServices {
         }
 
         return listNV;
+    }
+    //Hàm lấy thông tin bằng email hoặc tên đn
+    public Nhanvien GetNhanvienByEmailOrtendn(String gt) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        Nhanvien nhanvien = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            String strQuery = "from Nhanvien where email= '" + gt + "' or tendn= '" + gt + "'";
+            Query query = session.createQuery(strQuery);
+            nhanvien = (Nhanvien) query.uniqueResult();
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            System.out.println(e.toString());
+        } finally {
+            session.close();
+        }
+        return nhanvien;
     }
     
 }

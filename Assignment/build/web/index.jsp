@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <!--                            <label class="control-label col-sm-3" for="email"> Tên đăng nhập</label>-->
                             <div class="col-sm-8" style="    margin-left: 82px;">
-                                <input type="text" name="email" class="form-control" id="email" placeholder="Nhập tên đăng nhập">
+                                <input type="text" name="tendn" class="form-control" id="email" placeholder="Nhập tên đăng nhập">
                             </div>
                         </div>
                         <div class="form-group">
@@ -45,6 +45,12 @@
                         <div class="form-group"> 
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-info" style="margin-left: 82px;">Đăng nhập</button>
+                                <%                            if (session.getAttribute("errormsg") != null) {
+                                %>
+                                <div class="text-danger"><%=session.getAttribute("errormsg")%></div>
+                                <%
+                                    }
+                                %>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
 

@@ -6,8 +6,7 @@
 package com.javaweb.services;
 
 import com.javaweb.hibernate.util.HibernateUtil;
-import com.javaweb.model.Luongnv;
-import com.javaweb.model.Nhanvien;
+import com.javaweb.model.Calamviec;
 import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,18 +16,18 @@ import org.hibernate.Transaction;
  *
  * @author Admin
  */
-public class LuongServices {
-     public Luongnv getLuongByID(int idluong) {
+public class CaLamViecServices {
+    public Calamviec getCalamviecByID(String idcalamviec) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.getTransaction();
             tx.begin();
-            String strQuery = "from Luongnv where idluongnv = " + idluong;
+            String strQuery = "from Calamviec where idcalamviec = " + idcalamviec;
             Query query = session.createQuery(strQuery);
-            Luongnv nv = (Luongnv) query.uniqueResult();
+            Calamviec cv = (Calamviec) query.uniqueResult();
             tx.commit();
-            return nv;
+            return cv;
         } catch (Exception e) {
             if (tx != null) {
                 tx.rollback();
@@ -40,20 +39,20 @@ public class LuongServices {
         return null;
     }
       public int lcount = 0;
-    public ArrayList<Luongnv> getAllLuong(int pageSize, int pageNumber) {
+    public ArrayList<Calamviec> getAllcalamviecoder(int pageSize, int pageNumber) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        ArrayList listluong = new ArrayList<Luongnv>();
+        ArrayList listcalamviec= new ArrayList<Calamviec>();
 
         try {
             tx = session.getTransaction();
             tx.begin();
 
-            Query query = session.createQuery("from Luongnv order by idluongnv desc");
+            Query query = session.createQuery("from Calamviec");
             lcount = query.list().size();
             query = query.setFirstResult(pageSize * (pageNumber - 1));
             query.setMaxResults(pageSize);
-            listluong = (ArrayList) query.list();
+            listcalamviec = (ArrayList) query.list();
 
             tx.commit();
 
@@ -66,17 +65,17 @@ public class LuongServices {
             session.close();
         }
 
-        return listluong;
+        return listcalamviec;
     }
-     public ArrayList<Luongnv> GetAllluongnv() {
+     public ArrayList<Calamviec> GetAllCalamviec() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        ArrayList<Luongnv> listluong = new ArrayList<Luongnv>();
+        ArrayList<Calamviec> listcalamviec = new ArrayList<Calamviec>();
         try {
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from Luongnv");
-            listluong = (ArrayList) query.list();
+            Query query = session.createQuery("from Calamviec");
+            listcalamviec = (ArrayList) query.list();
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -86,15 +85,15 @@ public class LuongServices {
         } finally {
             session.close();
         }
-        return listluong;
+        return listcalamviec;
     }
-     public boolean InsertLuong(Luongnv luong) {
+     public boolean InsertCalamviec(Calamviec calamviec) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.getTransaction();
             tx.begin();
-            session.saveOrUpdate(luong);
+            session.saveOrUpdate(calamviec);
             tx.commit();
             return true;
         } catch (Exception e) {
@@ -107,15 +106,34 @@ public class LuongServices {
 
         return false;
     }
-     public boolean isChucvuExists(String chucvu) {
+     public boolean DeleteCalamviec(Calamviec calamviec) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            session.delete(calamviec);
+            tx.commit();
+            return true;
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            System.out.println(e.toString());
+        } finally {
+            session.close();
+        }
+        return false;
+    }
+     public boolean isCalamviecExists(String tenca) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         boolean result = false;
         try {
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from Luongnv where chucvu = '" + chucvu + "'");
-            Luongnv pt = (Luongnv) query.uniqueResult();
+            Query query = session.createQuery("from Calamviec where tenca = '" + tenca + "'");
+            Calamviec pt = (Calamviec) query.uniqueResult();
             tx.commit();
             if (pt != null) {
                 result = true;

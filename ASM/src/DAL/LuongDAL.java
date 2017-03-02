@@ -25,6 +25,20 @@ public class LuongDAL {
         ResultSet rs=ConnectionDB.ExecuteQueryGetTable(cauTruyVan);
         return rs;
     }
+   public static boolean KiemTraTrungLuong(int chucvu){
+        boolean ketQua = false;
+        String cauTruyVan = "select * from Luongnv where chucvu = '"+chucvu+"'";
+        ResultSet rs = ConnectionDB.ExecuteQueryGetTable(cauTruyVan);
+        try {
+            if(rs.next()){
+                
+                return true;
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return ketQua;
+    }
     public static ResultSet LayDuLieuQuyen(){ 
         String CTV="select * from chucvu";
         ResultSet rs=ConnectionDB.ExecuteQueryGetTable(CTV);
@@ -33,7 +47,7 @@ public class LuongDAL {
     }
     public static void SuaLuong(LuongNVDTO l) {
         String cauTruyVan = "Update luongnv set chucvu = '"+l.getChucVu()+"', luongcoban = '"+l.getLuongCoBan()+"',"
-                + " donvi = '"+l.getDonvi()+"',ghichu='"+l.getGhiChu()+"'";
+                + " donvi = '"+l.getDonvi()+"',ghichu='"+l.getGhiChu()+"' where idluongnv='"+l.getIdLuongNV()+"'";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }

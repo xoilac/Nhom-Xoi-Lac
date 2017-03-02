@@ -8,6 +8,7 @@ package BLL;
 import static BLL.ThongBao_ChuyenDoi.KiemTraSo;
 import static BLL.ThongBao_ChuyenDoi.ThongBao;
 import DAL.LuongDAL;
+import static DAL.LuongDAL.KiemTraTrungLuong;
 import DAL.NhanVienDAL;
 import DTO.LuongNVDTO;
 import java.sql.ResultSet;
@@ -75,8 +76,18 @@ public class LuongBLL {
         }
     }
 
-    public static boolean KiemTraThongTin(LuongNVDTO luong) {
+    public static boolean KiemTraLuong(int idluong) {
         boolean ketQua = true;
+
+        if (KiemTraTrungLuong(idluong)) {
+            ThongBao("Mức lương này đã được áp dụng cho nhân viên khác !", "Thông báo", 0);
+            return false;
+        }
+        return ketQua;
+    }
+
+    public static boolean KiemTraThongTin(LuongNVDTO luong) {
+        boolean ketQua = true, ktTL = true;
         if (luong.getLuongCoBan().trim().equals("")) {
             ThongBao("Vui lòng nhập tên nhân viên !", "Thông báo", 1);
             return false;
@@ -90,12 +101,19 @@ public class LuongBLL {
                 if (!KiemTraSo(luong.getLuongCoBan().charAt(i) + "")) {
                     tbLuong = "Lương phải là kí tự số !";
                     ketQua = false;
+                    ktTL = false;
                 }
             }
             if (!tbLuong.equals("")) {
                 ThongBao(tbLuong, "Thông báo", 1);
             }
-        } 
+        }
+        if (ktTL) {
+            if (KiemTraTrungLuong(luong.getChucVu())) {
+                ThongBao("Mức lương này đã được áp dụng cho nhân viên khác !", "Thông báo", 0);
+                return false;
+            }
+        }
 
         if (ketQua) {
             ThongBao("Thành công !", "Thông báo", 1);

@@ -11,13 +11,13 @@ import java.sql.Statement;
  * Lớp tạo và kết nối csdl
  */
 public class ConnectionDB {
-
+    
     String hostName = "localhost",
             dbName = "ql_nhanvien",
             userName = "root",
-            password = "123456";
+            password ="123456";
 
-    String url = "jdbc:mysql://" + hostName + ":3306/" + dbName + "?useSSL=false";
+    String url = "jdbc:mysql://"+hostName+":3306/"+dbName+"?useSSL=false";
     static Connection conn;
 
     public ConnectionDB() {

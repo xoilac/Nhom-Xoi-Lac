@@ -5,10 +5,6 @@
  */
 package Presentation;
 
-import BLL.NhanVienBLL;
-import DTO.ChucVuDTO;
-import java.sql.ResultSet;
-
 /**
  *
  * @author Admin
@@ -37,7 +33,7 @@ public class frmChucVu extends javax.swing.JFrame {
         lbltenchucvu = new javax.swing.JLabel();
         lblmota = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtmota = new javax.swing.JTextArea();
+        textarea = new javax.swing.JTextArea();
         txttenchucvu = new javax.swing.JTextField();
         btnThemchucvu = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
@@ -45,16 +41,6 @@ public class frmChucVu extends javax.swing.JFrame {
         txtIDchucvu = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức Vụ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(0, 102, 255))); // NOI18N
 
@@ -75,30 +61,20 @@ public class frmChucVu extends javax.swing.JFrame {
 
         lblmota.setText("Mô Tả");
 
-        txtmota.setColumns(20);
-        txtmota.setRows(5);
-        jScrollPane2.setViewportView(txtmota);
+        textarea.setColumns(20);
+        textarea.setRows(5);
+        jScrollPane2.setViewportView(textarea);
 
         btnThemchucvu.setBackground(new java.awt.Color(204, 204, 204));
         btnThemchucvu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThemchucvu.setForeground(new java.awt.Color(255, 0, 51));
         btnThemchucvu.setMnemonic('T');
         btnThemchucvu.setText("Thêm Chức vụ");
-        btnThemchucvu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemchucvuActionPerformed(evt);
-            }
-        });
 
         btnSua.setBackground(new java.awt.Color(204, 204, 204));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSua.setForeground(new java.awt.Color(0, 255, 0));
         btnSua.setText("Sửa");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
 
         lblIdchucvu.setText("ID Chức Vụ");
 
@@ -174,60 +150,6 @@ public class frmChucVu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnThemchucvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemchucvuActionPerformed
-        // TODO add your handling code here:
-        String tenchucvu = txttenchucvu.getText().trim();
-        String mota = txtmota.getText().trim();
-//        int idchucvu = Integer.parseInt(txtIDchucvu.getText());
-        
-        ChucVuDTO cv = new ChucVuDTO(0, tenchucvu, mota);
-        NhanVienBLL.ThemChucVu(cv);
-        ResultSet rs = NhanVienBLL.LayTatCaDuLieuChucVu();
-        NhanVienBLL.DoDuLieuChucVu(rs, tblChucvu);
-    }//GEN-LAST:event_btnThemchucvuActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
-        String tenchucvu = txttenchucvu.getText().trim();
-        String mota = txtmota.getText().trim();
-        int idchucvu = Integer.parseInt(txtIDchucvu.getText());
-        ChucVuDTO cv = new ChucVuDTO(idchucvu, tenchucvu, mota);
-        
-       NhanVienBLL.SuaChucVu(cv);
-         ResultSet rs = NhanVienBLL.LayTatCaDuLieuChucVu();
-        NhanVienBLL.DoDuLieuChucVu(rs, tblChucvu);
-        
-    }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        ResultSet rs = NhanVienBLL.LayTatCaDuLieuChucVu();
-        //Thực hiện đổ dữ liệu vào table
-        NhanVienBLL.DoDuLieuChucVu(rs, tblChucvu);
-//PhanQuyen(mnuNhanVien, mnuQLTaiKhoan, mnuiDangKy, iQuyenND);
-//        //Tạo biến ResultSet và thực hiện gán dữ liệu được lấy từ BLL qua hàm LayThongTinNhanVien()
-//        ResultSet rsNV = NhanVienBLL.LayThongTinNhanVien();
-//        //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
-//        NhanVienBLL.DoDuLieuNhanVien(rsNV, tblNhanVien);
-//
-//        //Tạo biến rs để chứa dữ liệu từ của QuyenNhanVienBLL
-//        ResultSet rsQuyen = NhanVienBLL.LayTatCaDuLieuChucVu();
-        //Gọi hàm để đổ dữ liệu vào Combobox
-       
-//
-//        //Gọi hàm đổi sang ô text
-//        DoiDateChooser(dateNgayVaolam).setText(sdf.format(currentDate));
-    }//GEN-LAST:event_formWindowOpened
-
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        // TODO add your handling code here:
-        int index = tblChucvu.getSelectedRow();
-        txtIDchucvu.setText(tblChucvu.getValueAt(index, 1).toString());
-        txttenchucvu.setText(tblChucvu.getValueAt(index, 2).toString());
-        txtmota.setText(tblChucvu.getValueAt(index, 3).toString());
-        
-    }//GEN-LAST:event_formMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -273,8 +195,8 @@ public class frmChucVu extends javax.swing.JFrame {
     private javax.swing.JLabel lblmota;
     private javax.swing.JLabel lbltenchucvu;
     private javax.swing.JTable tblChucvu;
+    private javax.swing.JTextArea textarea;
     private javax.swing.JTextField txtIDchucvu;
-    private javax.swing.JTextArea txtmota;
     private javax.swing.JTextField txttenchucvu;
     // End of variables declaration//GEN-END:variables
 }

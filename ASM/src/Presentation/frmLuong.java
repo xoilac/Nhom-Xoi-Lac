@@ -212,11 +212,15 @@ public class frmLuong extends javax.swing.JFrame {
 
             ghichu = textarea.getText().trim();
             LuongNVDTO luong = new LuongNVDTO(idluong, chucvu, luongcoban, "", ghichu);
-            LuongBLL.SuaNhanVien(luong);
-            ResultSet rs = LuongBLL.LayNhanVien();
-            LuongBLL.DoDuLieu(rs, tblLuong);
-            ResultSet rsQuyen = LuongBLL.LayQuyen();
-            ComboBoxBLL.LoadDuLieuCombobox(rsQuyen, cbbChucVu, "tenchucvu", "idchucvu");
+            
+
+                LuongBLL.SuaNhanVien(luong);
+                ResultSet rs = LuongBLL.LayNhanVien();
+                LuongBLL.DoDuLieu(rs, tblLuong);
+                ResultSet rsQuyen = LuongBLL.LayQuyen();
+                ComboBoxBLL.LoadDuLieuCombobox(rsQuyen, cbbChucVu, "tenchucvu", "idchucvu");
+            
+
         } catch (Exception e) {
             ThongBao("Vui lòng chọn bản ghi cần sửa !", "Thông báo", 1);
         }

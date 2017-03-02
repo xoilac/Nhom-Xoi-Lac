@@ -110,8 +110,8 @@ public class ThongBao_ChuyenDoi {
     }
 
     //Hàm thông báo với đầu vào gồm : nội dung, tiêu đề, icon
-    public static void ThongBao(String noiDung, String tieuDe, int icon) {
-        JOptionPane.showMessageDialog(null, noiDung, tieuDe, icon);
+    public static void ThongBao(String noidung, String tieude, int icon) {
+        JOptionPane.showMessageDialog(null, noidung, tieude,icon);
     }
 
     /*

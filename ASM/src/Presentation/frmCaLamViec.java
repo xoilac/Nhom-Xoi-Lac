@@ -80,6 +80,11 @@ public class frmCaLamViec extends javax.swing.JFrame {
                 "STT", "IDCa Làm Việc", "Mã Ca ", "Tên Ca", "Giờ Bắt Đầu", "Giờ Kết Thúc", "Ghi Chú"
             }
         ));
+        tblCaLamViec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCaLamViecMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCaLamViec);
 
         lblMaCa.setText("Mã Ca");
@@ -256,7 +261,7 @@ public class frmCaLamViec extends javax.swing.JFrame {
         String gioketthuc = txtGioKetThuc.getText().trim();
         String ghichu = txtGhiChu.getText().trim();
 //        int idchucvu = Integer.parseInt(txtIDchucvu.getText());
-        
+
         CaLamViecDTO clv = new CaLamViecDTO(0, maca, tenca, giobatdau, gioketthuc, ghichu);
         NhanVienBLL.ThemCaLamViec(clv);
         ResultSet rs = NhanVienBLL.LayTatCaDuLieuCaLamViec();
@@ -264,16 +269,15 @@ public class frmCaLamViec extends javax.swing.JFrame {
 
         //        int idchucvu = Integer.parseInt(txtIDchucvu.getText());
 
-
     }//GEN-LAST:event_btnThemCaLamViecActionPerformed
 
     private void btnXoaCaLamViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaCaLamViecActionPerformed
         // TODO add your handling code here:
         String id = txtIDCaLamViec.getText();
-         NhanVienBLL.XoaCaLamViec(id);
+        NhanVienBLL.XoaCaLamViec(id);
 
         //Tạo biến ResultSet và thực hiện gán dữ liệu được sau khi xóa
-        ResultSet rsCLV = NhanVienBLL.LayThongTinNhanVien();
+        ResultSet rsCLV = NhanVienBLL.LayTatCaDuLieuCaLamViec();
         //Gọi hàm đổ dữ liệu vào table THẬT từ BLL
         NhanVienBLL.DoDuLieuCaLamViec(rsCLV, tblCaLamViec);
 
@@ -301,9 +305,9 @@ public class frmCaLamViec extends javax.swing.JFrame {
         String ghichu = txtGhiChu.getText().trim();
         int idcalamviec = Integer.parseInt(txtIDCaLamViec.getText());
         CaLamViecDTO clv = new CaLamViecDTO(idcalamviec, maca, tenca, giobatdau, gioketthuc, ghichu);
-        
-       NhanVienBLL.SuaCaLamViec(clv);
-         ResultSet rs = NhanVienBLL.LayTatCaDuLieuCaLamViec();
+
+        NhanVienBLL.SuaCaLamViec(clv);
+        ResultSet rs = NhanVienBLL.LayTatCaDuLieuCaLamViec();
         NhanVienBLL.DoDuLieuCaLamViec(rs, tblCaLamViec);
     }//GEN-LAST:event_btnSuaCaLamViecActionPerformed
 
@@ -316,6 +320,11 @@ public class frmCaLamViec extends javax.swing.JFrame {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
+
+    }//GEN-LAST:event_formMouseClicked
+
+    private void tblCaLamViecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCaLamViecMouseClicked
+        // TODO add your handling code here:
         int index = tblCaLamViec.getSelectedRow();
         txtIDCaLamViec.setText(tblCaLamViec.getValueAt(index, 1).toString());
         txtMaCa.setText(tblCaLamViec.getValueAt(index, 2).toString());
@@ -323,7 +332,7 @@ public class frmCaLamViec extends javax.swing.JFrame {
         txtGioBatDau.setText(tblCaLamViec.getValueAt(index, 4).toString());
         txtGioKetThuc.setText(tblCaLamViec.getValueAt(index, 5).toString());
         txtGhiChu.setText(tblCaLamViec.getValueAt(index, 6).toString());
-    }//GEN-LAST:event_formMouseClicked
+    }//GEN-LAST:event_tblCaLamViecMouseClicked
 
     /**
      * @param args the command line arguments

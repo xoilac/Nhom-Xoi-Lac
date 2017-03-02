@@ -395,7 +395,7 @@ public class NhanVienBLL {
     }
 
     public static void DoDuLieuChucVu(ResultSet rs, JTable table) {
-        Object[] objs = new Object[]{"Id Chức Vụ", "Tên Chức Vụ", "Mô Tả",};
+        Object[] objs = new Object[]{"STT","Id Chức Vụ", "Tên Chức Vụ", "Mô Tả",};
         DefaultTableModel tableModel = new DefaultTableModel(objs, 0);
         table.setModel(tableModel);
 
@@ -422,7 +422,7 @@ public class NhanVienBLL {
             while (rs.next()) {
                 Object[] item = new Object[7];
                 item[0] = table.getRowCount() + 1;
-                item[1] = rs.getInt("idcalamviec");
+                item[1] = rs.getInt("idCaLamViec");
                 item[2] = rs.getString("maca");
                 item[3] = rs.getString("tenca");
                 item[4] = rs.getString("giobatdau");

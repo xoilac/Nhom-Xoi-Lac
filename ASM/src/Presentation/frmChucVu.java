@@ -6,7 +6,6 @@
 package Presentation;
 
 import BLL.NhanVienBLL;
-import static BLL.ThongBao_ChuyenDoi.ThongBao;
 import DTO.ChucVuDTO;
 import java.sql.ResultSet;
 
@@ -70,11 +69,6 @@ public class frmChucVu extends javax.swing.JFrame {
                 "STT", "IDChucVu", "Tên Chức Vụ", "Mô Tả"
             }
         ));
-        tblChucvu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblChucvuMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblChucvu);
 
         lbltenchucvu.setText("Tên Chức Vụ");
@@ -194,7 +188,6 @@ public class frmChucVu extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        try{
         String tenchucvu = txttenchucvu.getText().trim();
         String mota = txtmota.getText().trim();
         int idchucvu = Integer.parseInt(txtIDchucvu.getText());
@@ -203,9 +196,6 @@ public class frmChucVu extends javax.swing.JFrame {
        NhanVienBLL.SuaChucVu(cv);
          ResultSet rs = NhanVienBLL.LayTatCaDuLieuChucVu();
         NhanVienBLL.DoDuLieuChucVu(rs, tblChucvu);
-        }catch (NumberFormatException e) {
-            ThongBao("Vui lòng chọn bản ghi cần sửa !", "Thông báo", 1);
-        }
         
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -232,19 +222,11 @@ public class frmChucVu extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
         int index = tblChucvu.getSelectedRow();
-        txtIDchucvu.setText(tblChucvu.getValueAt(index, 0).toString());
-        txttenchucvu.setText(tblChucvu.getValueAt(index, 1).toString());
-        txtmota.setText(tblChucvu.getValueAt(index, 2).toString());
+        txtIDchucvu.setText(tblChucvu.getValueAt(index, 1).toString());
+        txttenchucvu.setText(tblChucvu.getValueAt(index, 2).toString());
+        txtmota.setText(tblChucvu.getValueAt(index, 3).toString());
         
     }//GEN-LAST:event_formMouseClicked
-
-    private void tblChucvuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChucvuMouseClicked
-        // TODO add your handling code here:
-        int index = tblChucvu.getSelectedRow();
-        txtIDchucvu.setText(tblChucvu.getValueAt(index, 0).toString());
-        txttenchucvu.setText(tblChucvu.getValueAt(index, 1).toString());
-        txtmota.setText(tblChucvu.getValueAt(index, 2).toString());
-    }//GEN-LAST:event_tblChucvuMouseClicked
 
     /**
      * @param args the command line arguments

@@ -21,7 +21,7 @@ public class MainClass {
     public static void main(String[] args) {
 
 
-        frmChucVu dn = new frmChucVu();
+        frmCaLamViec dn = new frmCaLamViec();
 
         dn.show();               
 

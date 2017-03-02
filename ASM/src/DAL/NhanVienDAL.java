@@ -217,14 +217,14 @@ public class NhanVienDAL {
     }
 
     public static void SuaChucVu(ChucVuDTO cv) {
-        String cauTruyVan = "Update chucvu set tenchucvu = '" + cv.getTenChucVu() + "' , mota = '" + cv.getGhiChu() + "' where idchucvu = " + cv.getIdChucVu();
+        String cauTruyVan = "Update chucvu set tenchucvu  = = '" + cv.getTenChucVu() + "' , mota = '" + cv.getGhiChu() + "' where idchucvu = " + cv.getIdChucVu();
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }
 
     public static void ThemChucVu(ChucVuDTO cv) {
         String cauTruyVan = "insert into chucvu(tenchucvu, mota) "
-                + "values ('" + cv.getTenChucVu() + "', '" + cv.getGhiChu()+ "');";
+                + "values ('" + cv.getTenChucVu() + "', '" + cv.getGhiChu() + "');";
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }
@@ -247,12 +247,12 @@ public class NhanVienDAL {
         System.out.println(cauTruyVan);
     }
     public static void SuaCaLamViec(CaLamViecDTO clv) {
-        String cauTruyVan = "Update CaLamViec set maca = '" + clv.getMaCa()+ "' , tenca = '" + clv.getTenCa()+ "',giobatdau = '" + clv.getGioBatDau()+ "',gioketthuc = '" + clv.getGioKetThuc()+ "',ghichu = '" + clv.getGhiChu() + "' where idcalamviec = " + clv.getIdCaLamViec();
+        String cauTruyVan = "Update CaLamViec set maca  = = '" + clv.getMaCa()+ "' , tenca = '" + clv.getTenCa()+ "',giobatdau = '" + clv.getGioBatDau()+ "',gioketthuc = '" + clv.getGioKetThuc()+ "',ghichu = '" + clv.getGhiChu() + "' where idcalamviec = " + clv.getIdCaLamViec();
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
         System.out.println(cauTruyVan);
     }
      public static void XoaCaLamViec(String idCaLamViec) {
-        String cauTruyVan = " delete from CaLamViec where idcalamviec = " + idCaLamViec;
+        String cauTruyVan = " delete from CaLamViec where idCaLamViec = " + idCaLamViec;
         ConnectionDB.ExecuteQueryUpdateTable(cauTruyVan);
     }
      public static ResultSet LayDuLieuCaLamViec() {

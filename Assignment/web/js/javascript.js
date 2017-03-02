@@ -259,82 +259,82 @@ $(window).ready(function () {
         }
     });
 });
-
-function loadXMLProductName() {
-    var xmlhttp;
-    var productName = document.getElementById("prod-name").value;
-    var formEdit = document.forms[0].id;
-
-    if (formEdit == 'editproduct') {
-        var oldName = document.getElementById("prod-old-name").value;
-    }
-
-    var urls = "CheckProductName.jsp?tsp=" + productName + "&old=" + oldName;
-
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    } else {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {
-            document.getElementById('errProdName').style.color = "red";
-            document.getElementById('errProdName').innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", urls, true);
-    xmlhttp.send();
-}
-
-function validateFormProduct() {
-    var x = document.forms["fProduct"]["prod-name"].value;
-    if (x != "") {
-        var y = document.getElementById('actual').value;
-    }
-    if (y == "taken") {
-        alert("Tên sản phẩm đã tồn tại");
-//        document.getElementById('errProdName').style.color = "red";
-//        document.getElementById('errProdName').innerHTML = 'Tồn tại';
-        return false;
-    } else {
-
-    }
-}
+//
+//function loadXMLProductName() {
+//    var xmlhttp;
+//    var productName = document.getElementById("prod-name").value;
+//    var formEdit = document.forms[0].id;
+//
+//    if (formEdit == 'editproduct') {
+//        var oldName = document.getElementById("prod-old-name").value;
+//    }
+//
+//    var urls = "CheckProductName.jsp?tsp=" + productName + "&old=" + oldName;
+//
+//    if (window.XMLHttpRequest) {
+//        xmlhttp = new XMLHttpRequest();
+//    } else {
+//        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//    }
+//    xmlhttp.onreadystatechange = function () {
+//        if (xmlhttp.readyState == 4) {
+//            document.getElementById('errProdName').style.color = "red";
+//            document.getElementById('errProdName').innerHTML = xmlhttp.responseText;
+//        }
+//    }
+//    xmlhttp.open("GET", urls, true);
+//    xmlhttp.send();
+//}
+//
+//function validateFormProduct() {
+//    var x = document.forms["fProduct"]["prod-name"].value;
+//    if (x != "") {
+//        var y = document.getElementById('actual').value;
+//    }
+//    if (y == "taken") {
+//        alert("Tên sản phẩm đã tồn tại");
+////        document.getElementById('errProdName').style.color = "red";
+////        document.getElementById('errProdName').innerHTML = 'Tồn tại';
+//        return false;
+//    } else {
+//
+//    }
+//}
 // kiểm tra trùng tên người dùng
-function loadXMLUserName() {
-    var xmlhttp;
-    var UserName = document.getElementById("username").value;
-    var urls = "CheckUserName.jsp?username=" + UserName;
-
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    } else {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {
-            document.getElementById('errUserName').style.color = "red";
-            document.getElementById('errUserName').innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", urls, true);
-    xmlhttp.send();
-}
-
-function validateFormUser() {
-    var x = document.forms["fUser"]["username"].value;
-    if (x != "") {
-        var y = document.getElementById('actual').value;
-    }
-    if (y == "taken") {
-        alert("Tên người dùng đã tồn tại");
-//        document.getElementById('errProdName').style.color = "red";
-//        document.getElementById('errProdName').innerHTML = 'Tồn tại';
-        return false;
-    } else {
-
-    }
-}
+//function loadXMLChucvu() {
+//    var xmlhttp;
+//    var chucVu = document.getElementById("chucvu").value;
+//    var urls = "CheckChucvu.jsp?chucvu=" + chucVu;
+//
+//    if (window.XMLHttpRequest) {
+//        xmlhttp = new XMLHttpRequest();
+//    } else {
+//        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//    }
+//    xmlhttp.onreadystatechange = function () {
+//        if (xmlhttp.readyState == 4) {
+//            document.getElementById('errChucvu').style.color = "red";
+//            document.getElementById('errChucvu').innerHTML = xmlhttp.responseText;
+//        }
+//    }
+//    xmlhttp.open("GET", urls, true);
+//    xmlhttp.send();
+//}
+//
+//function validateFormUser() {
+//    var x = document.forms["fChucvu"]["chucvu"].value;
+//    if (x != "") {
+//        var y = document.getElementById('actual').value;
+//    }
+//    if (y == "taken") {
+//        alert("Tên người dùng đã tồn tại");
+////        document.getElementById('errProdName').style.color = "red";
+////        document.getElementById('errProdName').innerHTML = 'Tồn tại';
+//        return false;
+//    } else {
+//
+//    }
+//}
 
 //Hàm kiểm tra thông tin đặt hàng
 $(window).ready(function () {
@@ -567,42 +567,42 @@ $(window).ready(function () {
     });
 });
 
-function loadXMLNewPassword() {
-    var xmlhttp;
-    var iduser = document.getElementById("iduser").value;
-    var mknhap = document.getElementById("mkcunhap").value;
-
-    var urls = "NewPassword.jsp?id=" + iduser + "&nhap=" + mknhap;
-
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    } else {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {
-            document.getElementById('errPassword').style.color = "red";
-            document.getElementById('errPassword').innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", urls, true);
-    xmlhttp.send();
-}
-
-function validatePassword() {
-    var x = document.forms["fPWD"]["mkcunhap"].value;
-    if (x != "") {
-        var y = document.getElementById('actual').value;
-    }
-    if (y == "taken") {
-        alert("Saipass");
-//        document.getElementById('errProdName').style.color = "red";
-//        document.getElementById('errProdName').innerHTML = 'Tồn tại';
-        return false;
-    } else {
-
-    }
-}
+//function loadXMLNewPassword() {
+//    var xmlhttp;
+//    var iduser = document.getElementById("iduser").value;
+//    var mknhap = document.getElementById("mkcunhap").value;
+//
+//    var urls = "NewPassword.jsp?id=" + iduser + "&nhap=" + mknhap;
+//
+//    if (window.XMLHttpRequest) {
+//        xmlhttp = new XMLHttpRequest();
+//    } else {
+//        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//    }
+//    xmlhttp.onreadystatechange = function () {
+//        if (xmlhttp.readyState == 4) {
+//            document.getElementById('errPassword').style.color = "red";
+//            document.getElementById('errPassword').innerHTML = xmlhttp.responseText;
+//        }
+//    }
+//    xmlhttp.open("GET", urls, true);
+//    xmlhttp.send();
+//}
+//
+//function validatePassword() {
+//    var x = document.forms["fPWD"]["mkcunhap"].value;
+//    if (x != "") {
+//        var y = document.getElementById('actual').value;
+//    }
+//    if (y == "taken") {
+//        alert("Saipass");
+////        document.getElementById('errProdName').style.color = "red";
+////        document.getElementById('errProdName').innerHTML = 'Tồn tại';
+//        return false;
+//    } else {
+//
+//    }
+//}
 
 //Kiem tra nhap thong tin sửa hóa đơn
 
@@ -637,3 +637,107 @@ $(window).ready(function () {
         }
     });
 });
+function loadXMLChucvu(idluong) {
+    var xmlhttp;
+    var chucvu = document.getElementById("chucvu"+idluong).value;
+    var giaTriCu = document.getElementById('giaTriCu'+idluong).value;
+    var urls = "CheckChucvu.jsp?chucvu=" + chucvu +"&idluong="+idluong+"&old="+giaTriCu;
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+//            document.getElementById('errChucvu'+idluong).style.color = "red";
+            document.getElementById('errChucvu'+idluong).innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", urls, true);
+    xmlhttp.send();
+}
+
+function validateFormLuong(idluong) {
+    var x = document.forms['fChucvu'+idluong]['chucvu'].value;
+    if (x != "") {
+        var y = document.getElementById('actual'+idluong).value;
+    }
+    if (y == "taken") {
+        alert("Chức vụ này đã có mức lương riêng");
+//        document.getElementById('errProdName').style.color = "red";
+//        document.getElementById('errProdName').innerHTML = 'Tồn tại';
+        return false;
+    } else {
+
+    }
+}
+function loadXMLCalamviec() {
+    var xmlhttp;
+    var Tenca = document.getElementById("tenca").value;
+    var urls = "CheckCalamviec.jsp?tenca=" + Tenca;
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            document.getElementById('errTenca').style.color = "red";
+            document.getElementById('errTenca').innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", urls, true);
+    xmlhttp.send();
+}
+
+function validateFormCalamviec() {
+    var x = document.forms["fCalamviec"]["tenca"].value;
+    if (x != "") {
+        var y = document.getElementById('actual').value;
+    }
+    if (y == "taken") {
+        alert("Ca này đã tồn tại");
+//        document.getElementById('errProdName').style.color = "red";
+//        document.getElementById('errProdName').innerHTML = 'Tồn tại';
+        return false;
+    } else {
+
+    }
+}
+function loadXMLEditCalamviec(idcalam) {
+    var xmlhttp;
+    var Tenca = document.getElementById("tenca"+idcalam).value;
+    var giaTriCu = document.getElementById('giaTriCu'+idcalam).value;
+    var urls = "CheckEditCalamviec.jsp?tenca=" + Tenca +"&idcalamviec="+idcalam+"&old="+giaTriCu;
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+//            document.getElementById('errChucvu'+idluong).style.color = "red";
+            document.getElementById('errTenca'+idcalam).innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", urls, true);
+    xmlhttp.send();
+}
+
+function validateFormEditCalamviec(idcalam) {
+    var x = document.forms['fCalamviec'+idluong]['tenca'].value;
+    if (x != "") {
+        var y = document.getElementById('actual'+idcalam).value;
+    }
+    if (y == "taken") {
+        alert("Ca làm việc này đã tồn tại");
+//        document.getElementById('errProdName').style.color = "red";
+//        document.getElementById('errProdName').innerHTML = 'Tồn tại';
+        return false;
+    } else {
+
+    }
+}

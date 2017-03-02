@@ -98,41 +98,29 @@ public class EditnvServlet extends HttpServlet {
                     if (fi.isFormField()) {
                         //do field specific process
                         String fieldName = fi.getFieldName();
-                        if (fi.getFieldName().equalsIgnoreCase("idnv")) 
-                        {
+                        if (fi.getFieldName().equalsIgnoreCase("idnv")) {
                             id = fi.getString("UTF-8");
-                        } else if (fieldName.equals("fullname")) 
-                        {
+                        } else if (fieldName.equals("fullname")) {
                             hoTen = fi.getString("UTF-8");
-                        } else if (fieldName.equals("birthday")) 
-                        {
+                        } else if (fieldName.equals("birthday")) {
                             strNgaySinh = fi.getString("UTF-8");
-                        } else if (fieldName.equals("dienthoai")) 
-                        {
+                        } else if (fieldName.equals("dienthoai")) {
                             sdt = fi.getString("UTF-8");
-                        } else if (fieldName.equals("address")) 
-                        {
+                        } else if (fieldName.equals("address")) {
                             diaChi = fi.getString("UTF-8");
-                        } else if (fieldName.equals("email")) 
-                        {
+                        } else if (fieldName.equals("email")) {
                             email = fi.getString("UTF-8");
-                        } else if (fieldName.equals("gender")) 
-                        {
+                        } else if (fieldName.equals("gender")) {
                             valGioiTinh = fi.getString("UTF-8");
-                        } else if (fieldName.equals("ngayVaoLam")) 
-                        {
+                        } else if (fieldName.equals("ngayVaoLam")) {
                             strNgayVaoLam = fi.getString("UTF-8");
-                        } else if (fieldName.equals("cmnd")) 
-                        {
+                        } else if (fieldName.equals("cmnd")) {
                             cmnd = fi.getString("UTF-8");
-                        } else if (fieldName.equals("ngayCap")) 
-                        {
+                        } else if (fieldName.equals("ngayCap")) {
                             strNgayCap = fi.getString("UTF-8");
-                        } else if (fieldName.equals("noiCap")) 
-                        {
+                        } else if (fieldName.equals("noiCap")) {
                             noiCap = fi.getString("UTF-8");
-                        } else if (fieldName.equals("ghiChu")) 
-                        {
+                        } else if (fieldName.equals("ghiChu")) {
                             ghiChu = fi.getString("UTF-8");
                         }
 //                        out.println(fi.getString("UTF-8")+ " "+fieldName);
@@ -160,11 +148,8 @@ public class EditnvServlet extends HttpServlet {
                         }
 
                         //call a method to upload file.
-                        if (fi.getFieldName().equals("hinhAnh")) {
-                            if (!fi.getName().equals("")) {
-                                hinhAnh = tenFile;
-                            }
-                        }
+                        
+
                     }
                 }
 
@@ -192,14 +177,21 @@ public class EditnvServlet extends HttpServlet {
                 snv.setEmail(email);
                 snv.setGhichu(ghiChu);
                 snv.setNoicap(noiCap);
-                snv.setHinhanh(hinhAnh);
                 
+                if (!tenFile.equals("")) {
+                    hinhAnh = tenFile;
+                }else{
+                    hinhAnh = snv.getHinhanh();
+                }
+                
+                snv.setHinhanh(hinhAnh);
+
                 boolean rs = nvs.ThemNhanVien(snv);
                 if (rs) {
                     Thread.sleep(5000);
                     response.sendRedirect("quanly.jsp");
                 }
-                
+
             } catch (Exception fue) {
                 System.out.println(fue.toString());
             }

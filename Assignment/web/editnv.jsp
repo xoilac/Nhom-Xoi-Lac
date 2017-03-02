@@ -116,8 +116,9 @@
                 <div class="form-group">
                     <input type="file" name="hinhAnh" size="50" onchange="loadFile(event, 'suanv<%=nv.getIdnhanvien()%>')" style="margin-top: 20px;    margin-left: 149px;border:none;"/>
                     <img id="outputsuanv<%=nv.getIdnhanvien()%>" src="<%=getServletContext().getInitParameter("file-upload")%><%=nv.getHinhanh()%>" style="width:100px;height:100px;    margin-left: 223px;">
+                    
                 </div>
-
+                
                 <div class="form-group">
                     <div class="col-md-2">
                     </div>
@@ -125,7 +126,7 @@
                 <div class="form-group" >
                     <div class="col-md-2">
                     </div>
-                    <button type="submit"  class="btn btn-twitter">Thêm</button>
+                    <button type="submit"  class="btn btn-twitter">Sửa</button>
                 </div>
 
             </form>

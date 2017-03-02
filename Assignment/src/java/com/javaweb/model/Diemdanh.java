@@ -1,5 +1,5 @@
 package com.javaweb.model;
-// Generated Feb 23, 2017 11:29:16 AM by Hibernate Tools 4.3.1
+// Generated Feb 28, 2017 3:47:14 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,21 +14,24 @@ public class Diemdanh  implements java.io.Serializable {
      private int nhanvien;
      private int calamviec;
      private Date thoigian;
+     private boolean trangthai;
      private String ghichu;
 
     public Diemdanh() {
     }
 
 	
-    public Diemdanh(int nhanvien, int calamviec, Date thoigian) {
+    public Diemdanh(int nhanvien, int calamviec, Date thoigian, boolean trangthai) {
         this.nhanvien = nhanvien;
         this.calamviec = calamviec;
         this.thoigian = thoigian;
+        this.trangthai = trangthai;
     }
-    public Diemdanh(int nhanvien, int calamviec, Date thoigian, String ghichu) {
+    public Diemdanh(int nhanvien, int calamviec, Date thoigian, boolean trangthai, String ghichu) {
        this.nhanvien = nhanvien;
        this.calamviec = calamviec;
        this.thoigian = thoigian;
+       this.trangthai = trangthai;
        this.ghichu = ghichu;
     }
    
@@ -59,6 +62,13 @@ public class Diemdanh  implements java.io.Serializable {
     
     public void setThoigian(Date thoigian) {
         this.thoigian = thoigian;
+    }
+    public boolean isTrangthai() {
+        return this.trangthai;
+    }
+    
+    public void setTrangthai(boolean trangthai) {
+        this.trangthai = trangthai;
     }
     public String getGhichu() {
         return this.ghichu;

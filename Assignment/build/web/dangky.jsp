@@ -29,6 +29,20 @@
                         <input type="date" name="birthday" class="form-control"  id="birthday">
                     </div>
                 </div>
+
+<!--                <div class="form-group">
+                    <label class="control-label col-md-3" for="birthday">Chức vụ <em>*</em></label>
+                    <div class="col-md-7">
+                        <select name="chucvu" class="form-control">
+                            <option value="">Nhân viên</option>
+                            <option value="">Thư ký</option>
+                        </select>
+                    </div>
+                    <a  href="#addchucvu" data-toggle="modal">
+                        <img src="images/edit-file-icon.png" alt=""/>
+                    </a>
+                </div>-->
+
                 <div class="form-group">
                     <label class="control-label col-md-3" for="dienthoai">Điện thoại <em>*</em> </label>
                     <div class="col-md-7"> 
@@ -104,8 +118,8 @@
                     </div>
                     <button type="submit"  class="btn btn-twitter">Thêm</button>
                 </div>
-
             </form><!--Đóng form thêm-->
+            <%--<%@include file="addchucvu.jsp" %>--%>
         </div>
     </div>
 </div><!--Đóng modal đăng ký-->

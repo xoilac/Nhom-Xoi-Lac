@@ -20,6 +20,10 @@
         <servlet-name>DiemDanhServlet</servlet-name>
         <servlet-class>com.javaweb.controller.DiemDanhServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChamCongServlet</servlet-name>
+        <servlet-class>com.javaweb.controller.ChamCongServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -47,6 +51,10 @@
             file-upload/
         </param-value>
     </context-param>
+    <servlet-mapping>
+        <servlet-name>ChamCongServlet</servlet-name>
+        <url-pattern>/ChamCongServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

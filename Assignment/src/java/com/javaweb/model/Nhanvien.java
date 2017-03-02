@@ -1,5 +1,5 @@
 package com.javaweb.model;
-// Generated Feb 23, 2017 11:29:16 AM by Hibernate Tools 4.3.1
+// Generated Feb 28, 2017 3:47:14 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,15 +27,7 @@ public class Nhanvien  implements java.io.Serializable {
      private String ghichu;
      private String hinhanh;
      private String noicap;
-     private boolean trangthai;
 
-    public boolean isTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(boolean trangthai) {
-        this.trangthai = trangthai;
-    }
     public Nhanvien() {
     }
 

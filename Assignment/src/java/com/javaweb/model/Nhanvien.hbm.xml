@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Feb 23, 2017 11:29:19 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Feb 28, 2017 3:47:19 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.javaweb.model.Nhanvien" table="nhanvien" catalog="ql_nhanvien" optimistic-lock="version">
         <id name="idnhanvien" type="java.lang.Integer">

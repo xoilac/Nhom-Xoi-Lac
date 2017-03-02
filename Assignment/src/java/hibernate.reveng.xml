@@ -41,10 +41,10 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="ql_nhanvien"/>
-  <table-filter match-name="luongnv"/>
   <table-filter match-name="nhanvien"/>
+  <table-filter match-name="luongnv"/>
+  <table-filter match-name="calamviec"/>
+  <table-filter match-name="chucvu"/>
   <table-filter match-name="chamcong"/>
   <table-filter match-name="diemdanh"/>
-  <table-filter match-name="chucvu"/>
-  <table-filter match-name="calamviec"/>
 </hibernate-reverse-engineering>

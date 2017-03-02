@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.javaweb.model.Nhanvien"%>
 <%@page import="com.javaweb.services.NhanVienServices"%>
 <%@page import="java.util.ArrayList"%>
@@ -97,7 +99,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%                                            
+                                        <%                
+                                            SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy");
                                             for (int i = 0; i < listNV.size(); i++) {
                                                 Nhanvien nvql = listNV.get(i);
                                                 int dem = i + 1;
@@ -109,7 +112,7 @@
                                             <th><input type="checkbox" name="idnv" value="<%=nvql.getIdnhanvien()%>" /></th>
                                             <th><%=dem%></th>
                                             <th><%=nvql.getHoten()%></th>
-                                            <th><%=nvql.getNgaysinh()%></th>
+                                            <th><%=sdf.format(nvql.getNgaysinh())%></th>
                                                 <% if (nvql.isGioitinh() == true) {
 
                                                 %>
@@ -120,10 +123,10 @@
                                             <%
                                                 }
                                             %>
-                                            <th><%=nvql.getNgayvaolam()%></th>
+                                            <th><%=sdf.format(nvql.getNgayvaolam())%></th>
                                             <th><img src="<%=getServletContext().getInitParameter("file-upload")%><%=nvql.getHinhanh() %>" alt=""width="80px"height="80px"/></th> 
                                             <td>
-                                                <a  href="#edit<%=nvql.getIdnhanvien()%>" data-toggle="modal">
+                                                <a  href="#editnv<%=nvql.getIdnhanvien()%>" data-toggle="modal">
                                                     <img src="images/edit-file-icon.png" alt=""/>
                                                 </a>
                                             </td>
@@ -140,7 +143,7 @@
                                 </table>
                             </form>
                             <%@include file="dangky.jsp" %>
-                            <%@include file="edit.jsp" %>
+                            <%@include file="editnv.jsp" %>
 
                             <%
                                 if (pageCount != 1) {

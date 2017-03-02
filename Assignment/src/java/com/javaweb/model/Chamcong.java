@@ -1,5 +1,5 @@
 package com.javaweb.model;
-// Generated Feb 23, 2017 11:29:16 AM by Hibernate Tools 4.3.1
+// Generated Feb 28, 2017 3:47:14 PM by Hibernate Tools 4.3.1
 
 
 
@@ -12,7 +12,6 @@ public class Chamcong  implements java.io.Serializable {
      private Integer idchamcong;
      private int nhanvien;
      private double tongngaycong;
-     private Double tonggiolamthem;
      private Double luongthuong;
      private Double thuclanh;
      private int thanglam;
@@ -27,10 +26,9 @@ public class Chamcong  implements java.io.Serializable {
         this.tongngaycong = tongngaycong;
         this.thanglam = thanglam;
     }
-    public Chamcong(int nhanvien, double tongngaycong, Double tonggiolamthem, Double luongthuong, Double thuclanh, int thanglam, String ghichu) {
+    public Chamcong(int nhanvien, double tongngaycong, Double luongthuong, Double thuclanh, int thanglam, String ghichu) {
        this.nhanvien = nhanvien;
        this.tongngaycong = tongngaycong;
-       this.tonggiolamthem = tonggiolamthem;
        this.luongthuong = luongthuong;
        this.thuclanh = thuclanh;
        this.thanglam = thanglam;
@@ -57,13 +55,6 @@ public class Chamcong  implements java.io.Serializable {
     
     public void setTongngaycong(double tongngaycong) {
         this.tongngaycong = tongngaycong;
-    }
-    public Double getTonggiolamthem() {
-        return this.tonggiolamthem;
-    }
-    
-    public void setTonggiolamthem(Double tonggiolamthem) {
-        this.tonggiolamthem = tonggiolamthem;
     }
     public Double getLuongthuong() {
         return this.luongthuong;
